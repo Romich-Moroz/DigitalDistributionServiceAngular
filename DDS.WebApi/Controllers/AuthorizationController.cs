@@ -33,7 +33,7 @@ namespace DDS.WebApi.Controllers
         private async void GenerateCookie(User user)
         {
             var claims = new List<Claim>
-                {
+                {                   
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role.Name)
                 };
@@ -50,7 +50,7 @@ namespace DDS.WebApi.Controllers
             }
             else
             {
-                if (await Context.Users.FirstOrDefaultAsync(u => u.Email == model.Email) != null)
+                if (await Context.Users.AnyAsync(u => u.Email == model.Email))
                     return Conflict("User already exists");
                 var user = new User { Email = model.Email, Password = model.Password, RoleId = 2 };
                 Context.Users.Add(user);

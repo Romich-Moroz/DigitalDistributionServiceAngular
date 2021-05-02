@@ -14,7 +14,6 @@ namespace DDS.Core.Entities
 
         public int RoleId { get; set; }
         public string Name { get; set; }
-
         [JsonIgnore]
         public virtual ICollection<User> Users { get; set; }
     }

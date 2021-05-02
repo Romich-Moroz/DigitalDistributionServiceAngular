@@ -45,7 +45,7 @@ namespace DDS.Database
                 entity.HasIndex(e => new { e.GameId, e.UserId }, "UQ_Cart_UserId_GameId")
                     .IsUnique();
 
-                entity.Property(e => e.AdditionDate)
+                entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
@@ -77,6 +77,9 @@ namespace DDS.Database
                     .IsRequired()
                     .HasMaxLength(64);
 
+                entity.Property(e => e.Image)
+                    .IsRequired();
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(64);
@@ -95,13 +98,11 @@ namespace DDS.Database
                 entity.HasOne(d => d.Game)
                     .WithMany(p => p.GameGenres)
                     .HasForeignKey(d => d.GameId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GameGenre_Game");
 
                 entity.HasOne(d => d.Genre)
                     .WithMany(p => p.GameGenres)
                     .HasForeignKey(d => d.GenreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GameGenre_Genre");
             });
 
@@ -125,7 +126,7 @@ namespace DDS.Database
                 entity.HasIndex(e => new { e.UserId, e.GameId }, "UQ_Ownership_UserId_GameId")
                     .IsUnique();
 
-                entity.Property(e => e.OwnershipDate)
+                entity.Property(e => e.Date)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
@@ -148,12 +149,16 @@ namespace DDS.Database
             {
                 entity.ToTable("Review");
 
-                entity.HasIndex(e => e.Rating, "IX_Review")
+                entity.HasIndex(e => e.OwnershipId, "UQ_Review_OwnershipId")
                     .IsUnique();
 
                 entity.Property(e => e.Comment)
                     .IsRequired()
                     .HasMaxLength(4000);
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
 
                 entity.HasOne(d => d.Ownership)
                     .WithMany(p => p.Reviews)
@@ -182,14 +187,14 @@ namespace DDS.Database
                 entity.HasIndex(e => e.Email, "UQ_Username")
                     .IsUnique();
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(128)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasMaxLength(320)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(128)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Role)
