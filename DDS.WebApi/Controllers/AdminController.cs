@@ -4,10 +4,7 @@ using DDS.WebApi.RequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DDS.WebApi.Controllers
@@ -65,7 +62,7 @@ namespace DDS.WebApi.Controllers
             return tmp;
         }
 
-        
+
         [HttpPost("games")]
         public async Task<IActionResult> AddGame(GameModel game)
         {
@@ -95,7 +92,7 @@ namespace DDS.WebApi.Controllers
             await Context.SaveChangesAsync();
             return Ok();
         }
-        
+
 
         [HttpPost("games/{GameId}/genres/{GenreId}")]
         public async Task<IActionResult> AddGameGenre(int gameId, int genreId)

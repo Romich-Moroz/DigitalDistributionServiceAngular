@@ -57,7 +57,7 @@ namespace DDS.WebApi.Controllers
                 return UnprocessableEntity("Page size is less or equal to zero");
             if (pageSize <= 0)
                 return UnprocessableEntity("Page size is less or equal to zero");
-            return Ok(await GetPagedList(new PageInfo(page,pageSize),gameName,minPrice,maxPrice,genreId));
+            return Ok(await GetPagedList(new PageInfo(page, pageSize), gameName, minPrice, maxPrice, genreId));
         }
 
         [HttpGet("games/{GameId}/reviews")]
@@ -80,8 +80,8 @@ namespace DDS.WebApi.Controllers
             if (await Context.Carts.Include(c => c.Game).AnyAsync(c => c.UserId == user.UserId && c.GameId == GameId && c.Game.IsRemoved == false))
                 return Conflict("Game is already in cart");
             if (await Context.Ownerships.AnyAsync(o => o.GameId == GameId && o.UserId == user.UserId))
-                return Conflict("Game is already owned");          
-            var cart = new Cart { GameId = GameId, UserId = user.UserId};
+                return Conflict("Game is already owned");
+            var cart = new Cart { GameId = GameId, UserId = user.UserId };
             Context.Carts.Add(cart);
             await Context.SaveChangesAsync();
             return Ok(cart);
@@ -106,10 +106,10 @@ namespace DDS.WebApi.Controllers
             var carts = await Context.Carts.Include(c => c.Game).Where(c => c.UserId == user.UserId).ToListAsync();
             if (carts.Count == 0)
                 return Conflict("Cart is empty");
-            Context.Ownerships.AddRange(carts.Select(c => new Ownership{ GameId = c.GameId, Price = c.Game.Price, UserId = c.UserId })); 
+            Context.Ownerships.AddRange(carts.Select(c => new Ownership { GameId = c.GameId, Price = c.Game.Price, UserId = c.UserId }));
             Context.Carts.RemoveRange(carts);
             await Context.SaveChangesAsync();
-            return Ok();          
+            return Ok();
         }
 
         [HttpGet("ownerships")]

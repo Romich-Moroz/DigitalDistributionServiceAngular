@@ -33,7 +33,7 @@ namespace DDS.WebApi.Controllers
         private async void GenerateCookie(User user)
         {
             var claims = new List<Claim>
-                {                   
+                {
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role.Name)
                 };
