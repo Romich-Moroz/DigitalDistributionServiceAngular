@@ -2,7 +2,7 @@
 
 using System;
 
-namespace DDS.Core.Entities
+namespace DDS.WebApi.Models
 {
     public partial class Review
     {

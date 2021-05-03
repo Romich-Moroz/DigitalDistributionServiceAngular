@@ -1,9 +1,10 @@
-﻿using DDS.Core.Entities;
+﻿
+using DDS.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace DDS.Database
+namespace DDS.WebApi.Database
 {
     public partial class ApplicationContext : DbContext
     {

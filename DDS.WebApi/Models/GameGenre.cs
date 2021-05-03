@@ -2,7 +2,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace DDS.Core.Entities
+namespace DDS.WebApi.Models
 {
     public partial class GameGenre
     {

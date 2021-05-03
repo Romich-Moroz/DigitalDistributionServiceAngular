@@ -1,5 +1,5 @@
-﻿using DDS.Core.Entities;
-using DDS.Database;
+﻿using DDS.WebApi.Database;
+using DDS.WebApi.Models;
 using DDS.WebApi.RequestModels;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;

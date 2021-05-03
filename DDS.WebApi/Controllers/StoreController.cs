@@ -1,6 +1,6 @@
 ﻿using CMSys.Common.Paging;
-using DDS.Core.Entities;
-using DDS.Database;
+using DDS.WebApi.Database;
+using DDS.WebApi.Models;
 using DDS.WebApi.RequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

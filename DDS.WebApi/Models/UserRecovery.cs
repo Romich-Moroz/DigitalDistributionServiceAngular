@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace DDS.Core.Entities
+namespace DDS.WebApi.Models
 {
     public partial class UserRecovery
     {
