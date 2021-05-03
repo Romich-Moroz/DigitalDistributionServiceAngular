@@ -86,7 +86,7 @@ namespace DDS.Database
 
                 entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
 
-                entity.Property(e => e.Rating).HasColumnType("decimal(2, 2)");
+                entity.Property(e => e.Rating).HasColumnType("decimal(4, 2)");
             });
 
             modelBuilder.Entity<GameGenre>(entity =>
