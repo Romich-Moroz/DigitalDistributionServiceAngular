@@ -1,10 +1,33 @@
-<h1>Angular Router App</h1>
-<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <ul>
-    <li><a routerLink="/authentication-component" routerLinkActive="active">Authentication</a></li>
-    <li><a routerLink="/catalog-component" routerLinkActive="active">Catalog</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<div class="container h-100">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/catalog" routerLinkActive="active">Digital distribution service</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
+        </li>
+        <li class="nav-ite">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/library" routerLinkActive="active">Library</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/authentication" routerLinkActive="active">Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- The routed views render in the <router-outlet>-->
+  <router-outlet></router-outlet>
+</div>
+

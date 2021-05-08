@@ -1,0 +1,16 @@
+<form class="card p-3" [formGroup]="recoveryForm" (ngSubmit)="onSubmit()" style="width:50%; margin: 0 auto; margin-top: 200px">
+  <h3 class="text-center">Account recovery</h3>
+  <div class="input-group">
+    <input type="email" class="form-control" formControlName="email" placeholder="Enter email" required/>
+    <span class="input-group-btn">
+      <button type="button" (click)="onRequest()" class="btn btn-primary">Send</button>
+    </span>
+  </div>
+  <div class="form-group">
+    <input type="text" style="margin-top:20px" formControlName="password" class="form-control" placeholder="Recovery code..." required>
+  </div>
+  <div class="form-group">
+    <a style="float:right" routerLink="/authentication" routerLinkActive="active">Back to sign in</a>
+  </div>
+  <button type="submit" style="width:100%" [disabled]="!recoveryForm.valid" class="btn btn-primary">Submit</button>
+</form>
