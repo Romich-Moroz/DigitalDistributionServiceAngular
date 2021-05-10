@@ -5,14 +5,18 @@ using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using MimeKit;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DDS.WebApi.Controllers
@@ -30,15 +34,27 @@ namespace DDS.WebApi.Controllers
             Config = config;
         }
 
-        private async void GenerateCookie(User user)
+        private void GenerateCookie(User user)
         {
-            var claims = new List<Claim>
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("DigitalDistributionService"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "https://localhost:5000",
+                audience: "https://localhost:44328",
+                claims: new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role.Name)
-                };
-            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+                },
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: signinCredentials
+            );
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+            HttpContext.Response.Cookies.Append("AuthorizationToken", tokenString,
+            new CookieOptions
+            {
+                MaxAge = TimeSpan.FromMinutes(30)
+            });
         }
 
         [HttpPost("register")]
@@ -51,11 +67,11 @@ namespace DDS.WebApi.Controllers
             else
             {
                 if (await Context.Users.AnyAsync(u => u.Email == model.Email))
-                    return Conflict("User already exists");
+                    return Conflict(Json("User already exists"));
                 var user = new User { Email = model.Email, Password = model.Password, RoleId = 2 };
                 Context.Users.Add(user);
                 await Context.SaveChangesAsync();
-                return Ok(user);
+                return Ok();
             }
         }
 
@@ -70,14 +86,16 @@ namespace DDS.WebApi.Controllers
             {
                 User user;
                 if ((user = await Context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password)) == null)
-                    return Conflict("Invalid credentials");
+                    return Conflict(Json("Invalid credentials"));
                 GenerateCookie(user);
                 return Ok(user);
             }
         }
 
+
+
         [HttpPost("logout")]
-        public async Task<IActionResult> Authorize()
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
             return Ok();
@@ -88,7 +106,7 @@ namespace DDS.WebApi.Controllers
         {
             var user = await Context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
-                return Conflict("User not found");
+                return Conflict(Json("User not found"));
 
             MimeMessage message = new MimeMessage();
             message.From.Add(new MailboxAddress("Support", "support@dds.com"));
@@ -116,7 +134,7 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> ConfirmIdentity(string code)
         {
             var user = (await Context.UserRecoveries.Include(ur => ur.User).Include(ur => ur.User.Role).FirstOrDefaultAsync(ur => ur.RecoveryLink == code))?.User;
-            if (user == null) return Conflict("Recovery code is not valid");
+            if (user == null) return Conflict(Json("Recovery code is not valid"));
             Context.UserRecoveries.RemoveRange(Context.UserRecoveries.Where(ur => ur.UserId == user.UserId));
             await Context.SaveChangesAsync();
             GenerateCookie(user);

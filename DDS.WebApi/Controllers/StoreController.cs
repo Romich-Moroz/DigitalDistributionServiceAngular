@@ -50,6 +50,7 @@ namespace DDS.WebApi.Controllers
             return query;
         }
 
+        [AllowAnonymous]
         [HttpGet("games")]
         public async Task<IActionResult> GetGames(int page, int pageSize, string gameName, decimal minPrice, decimal maxPrice, int genreId)
         {
@@ -60,6 +61,7 @@ namespace DDS.WebApi.Controllers
             return Ok(await GetPagedList(new PageInfo(page, pageSize), gameName, minPrice, maxPrice, genreId));
         }
 
+        [AllowAnonymous]
         [HttpGet("games/{GameId}/reviews")]
         public async Task<IActionResult> GetGameReviews(int GameId)
         {
