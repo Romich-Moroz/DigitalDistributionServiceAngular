@@ -9,14 +9,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using MimeKit;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DDS.WebApi.Controllers
@@ -34,27 +31,15 @@ namespace DDS.WebApi.Controllers
             Config = config;
         }
 
-        private void GenerateCookie(User user)
+        private async void GenerateCookie(User user)
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("DigitalDistributionService"));
-            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-            var tokeOptions = new JwtSecurityToken(
-                issuer: "https://localhost:5000",
-                audience: "https://localhost:44328",
-                claims: new List<Claim>
+            var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role.Name)
-                },
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: signinCredentials
-            );
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-            HttpContext.Response.Cookies.Append("AuthorizationToken", tokenString,
-            new CookieOptions
-            {
-                MaxAge = TimeSpan.FromMinutes(30)
-            });
+                };
+            ClaimsIdentity id = new ClaimsIdentity(claims, "AuthorizationToken", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
         [HttpPost("register")]
