@@ -29,4 +29,8 @@ export class StoreService {
     return this.http.get<Genre[]>(this.apiUrl + "/store/genres", this.options).pipe(catchError(this.httpErrorHandler));
   }
 
+  getGame(gameId: number) {
+    return this.http.get<Game>(this.apiUrl + "/store/games/" + gameId, this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
 }

@@ -24,7 +24,7 @@ const routes: Routes =
     { path: 'library', component: LibraryComponent },
     { path: 'admin', component: AdminComponent },
     { path: 'update-genres', component: UpdateGenresComponent },
-    { path: 'update-game', component: UpdateGameComponent },
+    { path: 'update-game/:id', component: UpdateGameComponent },
     { path: 'update-review', component: UpdateReviewComponent },
     //{ path: '**', component: PageNotFoundComponent  }
   ];

@@ -7,8 +7,6 @@ export class Game {
     return result;
   }
 
-  imageBase64: string;
-
   constructor(
     public gameId?: number,
     public name?: string,
@@ -18,9 +16,8 @@ export class Game {
     public reviewCount?: number,
     public price?: number,
     public gameGenres?: GameGenre[],
-    public image?: ArrayBuffer,
+    public image?: string,
   ) {
-    this.imageBase64 = btoa(String.fromCharCode(...new Uint8Array(image)))
-    console.log(this.imageBase64);
+    
   }
 }

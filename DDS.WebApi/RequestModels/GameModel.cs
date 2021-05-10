@@ -15,7 +15,6 @@ namespace DDS.WebApi.RequestModels
         public string Name { get; set; }
         [Required, MaxLength(4000)]
         public string Description { get; set; }
-        [Required]
         public IFormFile Image { get; set; }
     }
 }

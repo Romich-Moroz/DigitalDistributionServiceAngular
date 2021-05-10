@@ -1,1 +1,56 @@
-<p>update-game works!</p>
+<form class="card p-3" [formGroup]="form" (ngSubmit)="onSubmit()" style="display: inline; width:70%; float: left" enctype="multipart/form-data">
+  <h3 class="text-center">Update game</h3>
+  <span style="color:red" class="text-center" [hidden]="error == null">{{error}}</span>
+  <span class="text-center" [hidden]="message == null">{{message}}</span>
+
+  <div class="form-group">
+    <img *ngIf="game != null"  [src]="['data:image/png;base64',game?.image]" style="width:100%; margin-bottom:10px" />
+    <label for="file">Choose Image</label>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+  </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" formControlName="name" class="form-control" [ngModel]="game?.name" placeholder="Enter name..." required>
+  </div>
+  <div class="form-group">
+    <label>Developer</label>
+    <input type="text" formControlName="developer" class="form-control" [ngModel]="game?.developer" placeholder="Enter developer name..." required>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea *ngIf="game != null" type="text" rows="10" formControlName="description" class="form-control" [(ngModel)]="game.description" placeholder="Description..." required></textarea>
+  </div>
+  <div class="form-group">
+    <label>Price $</label>
+    <input type="number" formControlName="price" class="form-control" [ngModel]="game?.price" placeholder="Enter price..." required>
+  </div>
+  <button type="submit" style="width:100%; margin-top:10px" [disabled]="!form.valid" class="btn btn-primary">Update</button>
+</form>
+
+<div class="card p-3" style="display:inline; width:28%; float:right">
+  <h4 class="text-center">Genres list</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Genre</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let genre of this.game?.gameGenres">
+        <td>{{ genre.genre.name }}</td>
+        <td><button (click)="onDeleteGameGenre(game?.gameId, genre.genre?.genreId)" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <form class="card p-3" [formGroup]="formGenre">
+    <h3 class="text-center">Add genre</h3>
+    <span style="color:red; text-align:center" [hidden]="error == null">{{error}}</span>
+    <div class="form-group">
+      <select class="form-select" formControlName="selectedGenre" aria-label="Default select example" style="width:65%; float:left">
+        <option *ngFor="let genre of leftoverGenres" [value]="genre.genreId">{{genre.name}}</option>
+      </select>
+      <button type="button" style="display:inline; width:30%; float:right" (click)="onAddGameGenre(game?.gameId, formGenre.get('selectedGenre').value)" [disabled]="game?.gameId == 0 || formGenre.get('selectedGenre').invalid" class="btn btn-primary">Add</button>
+    </div>
+  </form>
+</div>

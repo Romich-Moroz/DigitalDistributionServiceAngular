@@ -42,18 +42,28 @@ namespace DDS.WebApi.Controllers
 
         private async Task<Game> MergeGame(GameModel game)
         {
-            using var ms = new MemoryStream();
-            await game.Image.CopyToAsync(ms);
-
-            var tmp = new Game
+            byte[] image = null;
+            if (game.Image != null)
             {
-                GameId = game.GameId,
-                Name = game.Name,
-                Developer = game.Developer,
-                Description = game.Description,
-                Price = game.Price,
-                Image = ms.ToArray()
-            };
+                using var ms = new MemoryStream();
+                await game.Image.CopyToAsync(ms);
+                image = ms.ToArray();
+            }
+
+            Game tmp;
+            if (game.GameId != 0)
+                tmp = await Context.Games.FirstOrDefaultAsync(g => g.GameId == game.GameId);
+            else
+                tmp = new Game();
+
+            tmp.GameId = game.GameId;
+            tmp.Name = game.Name;
+            tmp.Description = game.Description;
+            tmp.Developer = game.Developer;
+            tmp.Price = game.Price;
+            if (image != null)
+                tmp.Image = image;
+
             if (tmp.GameId == 0)
                 Context.Games.Add(tmp);
             else
@@ -66,7 +76,7 @@ namespace DDS.WebApi.Controllers
         [HttpPost("games")]
         public async Task<IActionResult> AddGame(GameModel game)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || game.Image == null)
             {
                 return UnprocessableEntity(ModelState);
             }

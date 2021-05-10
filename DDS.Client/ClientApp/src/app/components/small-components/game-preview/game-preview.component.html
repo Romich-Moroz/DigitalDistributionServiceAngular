@@ -1,12 +1,13 @@
 <div class="card p-3">
   <div style="display: flex; flex:1 1 auto">
     <div class="img-square-wrapper">
-      <img [src]="game.imageBase64" height="300" alt="Card image cap">
+      <img [src]="['data:image/png;base64',game.image]" width="500" alt="Card image cap">
     </div>
     <div class="card-body">
       <div>
         <h4 class="card-title" style="display:inline">{{ game.name }}</h4>
-        <a style="display: inline; float:right">{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
+        <label style="display: inline; float:right" *ngIf="game.reviewCount == 0">Not rated yet</label>
+        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0">{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
       </div>
       <div style="margin-top:5px">
         <h6 style="" class="card-subtitle mb-2 text-muted">Developer: {{game.developer}}</h6>
@@ -17,6 +18,7 @@
   </div>
   <div class="card-footer">
     <p style="display:inline;" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
-    <button type="button" style="float:right" class="btn btn-success text-right">Add to cart</button>
+    <button type="button" style="float:right" class="btn btn-success">Add to cart</button>
+    <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1">Edit</a>
   </div>
 </div>

@@ -69,6 +69,16 @@ namespace DDS.WebApi.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet("games/{GameId}")]
+        public async Task<IActionResult> GetGame(int GameId)
+        {
+            var game = await Context.Games.Include(g => g.GameGenres).ThenInclude(gg => gg.Genre).FirstOrDefaultAsync(g => g.GameId == GameId);
+            if (game == null)
+                return UnprocessableEntity(Json("Game does not exist"));
+            return Ok(game);
+        }
+
+        [AllowAnonymous]
         [HttpGet("genres")]
         public async Task<IActionResult> GetGenres()
         {
