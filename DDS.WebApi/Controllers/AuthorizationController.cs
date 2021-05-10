@@ -125,5 +125,13 @@ namespace DDS.WebApi.Controllers
             GenerateCookie(user);
             return Ok(user);
         }
+
+        [HttpPost("check")]
+        public async Task<IActionResult> AuthCheck()
+        {
+            var user = await Context.Users.FirstOrDefaultAsync(u => u.Email == HttpContext.User.Identity.Name);
+            return Ok(user);
+        }
+
     }
 }

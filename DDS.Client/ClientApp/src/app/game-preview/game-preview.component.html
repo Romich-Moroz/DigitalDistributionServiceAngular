@@ -1,22 +1,22 @@
 <div class="card p-3">
   <div style="display: flex; flex:1 1 auto">
     <div class="img-square-wrapper">
-      <img src="https://via.placeholder.com/150" height="300" alt="Card image cap">
+      <img [src]="game.imageBase64" height="300" alt="Card image cap">
     </div>
     <div class="card-body">
       <div>
-        <h4 class="card-title" style="display:inline">Game name</h4>
-        <a style="display: inline; float:right">Average rating: x based on y votes</a>
+        <h4 class="card-title" style="display:inline">{{ game.name }}</h4>
+        <a style="display: inline; float:right">{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
       </div>
       <div style="margin-top:5px">
-        <h6 style="" class="card-subtitle mb-2 text-muted">Developer:</h6>
-        <p>Description: </p>
-        <p>Price: 29.99$</p>
+        <h6 style="" class="card-subtitle mb-2 text-muted">Developer: {{game.developer}}</h6>
+        <p>{{game.description}} </p>
+        <h6 style="float:right">Only for: {{ game.price }}$</h6>
       </div>
     </div>
   </div>
   <div class="card-footer">
-    <p style="display:inline; vertical-align:middle">Genres: Fantasy, RPG, Shooter</p>
+    <p style="display:inline;" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
     <button type="button" style="float:right" class="btn btn-success text-right">Add to cart</button>
   </div>
 </div>

@@ -51,7 +51,7 @@ namespace DDS.WebApi.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("games")]
+        [HttpPost("games")]
         public async Task<IActionResult> GetGames(int page, int pageSize, string gameName, decimal minPrice, decimal maxPrice, int genreId)
         {
             if (page <= 0)

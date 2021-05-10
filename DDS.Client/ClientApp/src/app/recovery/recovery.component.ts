@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-recovery',
@@ -19,15 +20,18 @@ export class RecoveryComponent {
   constructor(private dataService: DataService, private router: Router) { }
 
   onRequest() {
-    this.dataService.restore(
+    this.dataService.authService.restore(
       this.recoveryForm.get('email').value
     ).subscribe(() => { this.message = "Enter recieved code below" }, (error: string) => this.error = error)
   }
 
   onSubmit() {
-    this.dataService.confirm(
+    this.dataService.authService.confirm(
       this.recoveryForm.get('password').value
-    ).subscribe(() => { this.router.navigate(["/account"]) }, (error: string) => this.error = error)
+    ).subscribe((data: User) => {
+      this.dataService.authService.currentUser = data;
+      this.router.navigate(["/account"])
+    }, (error: string) => this.error = error)
   }
 
 }

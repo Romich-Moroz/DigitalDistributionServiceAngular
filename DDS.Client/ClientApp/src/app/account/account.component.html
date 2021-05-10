@@ -1,1 +1,10 @@
-
+<form class="card p-3" [formGroup]="settingsForm" style="margin-top: 20px">
+  <h3 class="text-center">Account settings</h3>
+  <span style="color:red; text-align:center" [hidden]="error == null">{{error}}</span>
+  <span style=" text-align:center" [hidden]="message == null">{{message}}</span>
+  <div class="form-group">
+    <label>New password</label>
+    <input type="text" style="width:50%; display:inline; margin-left:5px; margin-right:5px" formControlName="newPassword" class="form-control" placeholder="Enter new password" required>
+    <button type="button" style="display:inline" (click)="onChangePassword()" [disabled]="!settingsForm.get('newPassword').valid" class="btn btn-primary">Change password</button>
+  </div>
+</form>

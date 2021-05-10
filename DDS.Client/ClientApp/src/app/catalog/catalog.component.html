@@ -7,4 +7,4 @@
     <i class="fas fa-search"></i>
   </button>
 </div>
-<app-game-preview></app-game-preview>
+<app-game-preview *ngFor="let game of this.page?.items" [game]="game"></app-game-preview>

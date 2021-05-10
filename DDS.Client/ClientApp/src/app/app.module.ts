@@ -14,6 +14,10 @@ import { LibraryComponent } from './library/library.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { GamePreviewComponent } from './game-preview/game-preview.component';
+import { DataService } from './data.service';
+import { AdminComponent } from './admin/admin.component';
+import { UpdateGameComponent } from './update-game/update-game.component';
+import { UpdateReviewComponent } from './update-review/update-review.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { GamePreviewComponent } from './game-preview/game-preview.component';
     LibraryComponent,
     RegistrationComponent,
     RecoveryComponent,
-    GamePreviewComponent
+    GamePreviewComponent,
+    AdminComponent,
+    UpdateGameComponent,
+    UpdateReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import { GamePreviewComponent } from './game-preview/game-preview.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,7 +18,7 @@ export class RegistrationComponent {
   constructor(private dataService: DataService, private router: Router) { }
 
   onSubmit() {
-    this.dataService.register(
+    this.dataService.authService.register(
       this.registrationForm.get('email').value,
       this.registrationForm.get('password').value
     ).subscribe(() => { this.router.navigate(["/authentication"]) }, (error: string) => this.error = error)

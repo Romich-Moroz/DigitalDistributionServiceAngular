@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './account/account.component';
+import { AdminComponent } from './admin/admin.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { CartComponent } from './cart/cart.component';
 import { CatalogComponent } from './catalog/catalog.component';
@@ -18,6 +19,7 @@ const routes: Routes =
     { path: 'cart', component: CartComponent },
     { path: 'account', component: AccountComponent },
     { path: 'library', component: LibraryComponent },
+    { path: 'admin', component: AdminComponent },
     //{ path: '**', component: PageNotFoundComponent  }
   ];
 

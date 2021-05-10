@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Game } from '../models/game';
 
 @Component({
   selector: 'app-game-preview',
@@ -7,13 +8,10 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./game-preview.component.css']
 })
 export class GamePreviewComponent implements OnInit {
-
-
-  constructor(
-  ) { }
+  @Input() game: Game;
 
   ngOnInit() {
-    
+    console.log(this.game);
   }
 
 }

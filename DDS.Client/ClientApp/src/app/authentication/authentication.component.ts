@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-authentication',
@@ -18,9 +19,14 @@ export class AuthenticationComponent {
   constructor(private dataService: DataService, private router: Router) { }
 
   onSubmit() {
-    this.dataService.authenticate(
+    this.dataService.authService.authenticate(
       this.authenticationForm.get('email').value,
       this.authenticationForm.get('password').value
-    ).subscribe(() => { this.router.navigate(["/catalog"]) }, (error: string) => this.error = error)
+    ).subscribe((data: User) =>
+    {
+      console.log(this.dataService.authService.currentUser);
+      this.dataService.authService.currentUser = data;
+      this.router.navigate(["/catalog"])
+    }, (error: string) => this.error = error)
   }
 }
