@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Game } from '../models/game';
+import { Game } from '../../../models/game';
 
 @Component({
   selector: 'app-game-preview',

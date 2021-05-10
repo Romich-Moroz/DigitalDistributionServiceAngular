@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
-import { User } from '../models/user';
+import { User } from '../../../models/user';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-authentication',

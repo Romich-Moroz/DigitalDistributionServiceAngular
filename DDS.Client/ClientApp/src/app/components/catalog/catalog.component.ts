@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
-import { Game } from '../models/game';
-import { Page } from '../models/page';
+import { Game } from '../../models/game';
+import { Page } from '../../models/page';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-catalog',

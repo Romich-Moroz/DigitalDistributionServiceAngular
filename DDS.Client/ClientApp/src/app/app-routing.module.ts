@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountComponent } from './account/account.component';
-import { AdminComponent } from './admin/admin.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { CartComponent } from './cart/cart.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { LibraryComponent } from './library/library.component';
-import { RecoveryComponent } from './recovery/recovery.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { AccountComponent } from './components/account/account.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AuthenticationComponent } from './components/auth/authentication/authentication.component';
+import { RecoveryComponent } from './components/auth/recovery/recovery.component';
+import { RegistrationComponent } from './components/auth/registration/registration.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { LibraryComponent } from './components/library/library.component';
 
 const routes: Routes =
 

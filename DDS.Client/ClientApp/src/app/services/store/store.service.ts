@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Game } from './models/game';
-import { Page } from './models/page';
+import { Game } from '../../models/game';
+import { Page } from '../../models/page';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,6 @@ export class StoreService {
     params.append("minPrice", minPrice.toString());
     params.append("maxPrice", maxPrice.toString());
     params.append("genreId", genreId.toString());
-    return this.http.post<any>(this.apiUrl + "/store/games", params, this.options).pipe(catchError(this.httpErrorHandler));
+    return this.http.post<Page<Game>>(this.apiUrl + "/store/games", params, this.options).pipe(catchError(this.httpErrorHandler));
   }
 }

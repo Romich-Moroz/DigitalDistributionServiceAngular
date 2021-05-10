@@ -68,6 +68,13 @@ namespace DDS.WebApi.Controllers
             return Ok(await Context.Reviews.Where(r => r.Ownership.GameId == GameId).ToListAsync());
         }
 
+        [AllowAnonymous]
+        [HttpGet("genres")]
+        public async Task<IActionResult> GetGenres()
+        {
+            return Ok(await Context.Genres.ToListAsync());
+        }
+
 
         [HttpGet("carts")]
         public async Task<IActionResult> GetCart()
