@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Game } from '../../models/game';
+import { Genre } from '../../models/genre';
 import { Page } from '../../models/page';
 
 @Injectable({
@@ -23,4 +24,9 @@ export class StoreService {
     params.append("genreId", genreId.toString());
     return this.http.post<Page<Game>>(this.apiUrl + "/store/games", params, this.options).pipe(catchError(this.httpErrorHandler));
   }
+
+  getGenres(): Observable<Genre[]> {
+    return this.http.get<Genre[]>(this.apiUrl + "/store/genres", this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
 }

@@ -21,7 +21,7 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> AddGenre(string name)
         {
             if (await Context.Genres.AnyAsync(g => g.Name.ToUpper() == name.ToUpper()))
-                return Conflict("Genre with such name already exists");
+                return Conflict(Json("Genre with such name already exists"));
             var genre = new Genre { Name = name };
             Context.Genres.Add(genre);
             await Context.SaveChangesAsync();
@@ -33,7 +33,7 @@ namespace DDS.WebApi.Controllers
         {
             var genre = await Context.Genres.FirstOrDefaultAsync(g => g.GenreId == GenreId);
             if (genre == null)
-                return Conflict("Genre with such id does not exist");
+                return Conflict(Json("Genre with such id does not exist"));
             Context.Genres.Remove(genre);
             await Context.SaveChangesAsync();
             return Ok();
@@ -87,7 +87,7 @@ namespace DDS.WebApi.Controllers
         {
             var game = await Context.Games.FirstOrDefaultAsync(g => g.GameId == GameId);
             if (game == null)
-                return Conflict("Game does not exist");
+                return Conflict(Json("Game does not exist"));
             Context.Games.Remove(game);
             await Context.SaveChangesAsync();
             return Ok();
@@ -106,7 +106,7 @@ namespace DDS.WebApi.Controllers
             }
             catch
             {
-                return Conflict("Game or genre does not exist");
+                return Conflict(Json("Game or genre does not exist"));
             }
         }
 
@@ -115,7 +115,7 @@ namespace DDS.WebApi.Controllers
         {
             var gameGenre = await Context.GameGenres.FirstOrDefaultAsync(gg => gg.GameId == gameId && gg.GenreId == genreId);
             if (gameGenre == null)
-                return Conflict("Game or genre does not exist");
+                return Conflict(Json("Game or genre does not exist"));
             Context.GameGenres.Remove(gameGenre);
             await Context.SaveChangesAsync();
             return Ok();

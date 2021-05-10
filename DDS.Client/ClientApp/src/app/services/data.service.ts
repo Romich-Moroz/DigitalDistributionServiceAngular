@@ -4,6 +4,7 @@ import { Observable, Subscription, throwError } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 import { StoreService } from './store/store.service';
 import { AccountService } from './account/account.service';
+import { AdminService } from './admin/admin.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,13 @@ export class DataService {
   authService: AuthService;
   storeService: StoreService;
   accountService: AccountService;
+  adminService: AdminService;
 
   constructor(private http: HttpClient) {
     this.authService = new AuthService(http, this.apiUrl, this.options, this.httpErrorHandler);
     this.storeService = new StoreService(http, this.apiUrl, this.options, this.httpErrorHandler);
     this.accountService = new AccountService(http, this.apiUrl, this.options, this.httpErrorHandler);
+    this.adminService = new AdminService(http, this.apiUrl, this.options, this.httpErrorHandler);
   }
 
 
