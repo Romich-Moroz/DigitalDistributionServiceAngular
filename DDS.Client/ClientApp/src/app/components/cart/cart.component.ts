@@ -30,4 +30,11 @@ export class CartComponent implements OnInit {
     });
   }
 
+  getSum() : number {
+    var result = 0;
+    for (var i = 0; i < this.carts?.length; i++)
+      result += this.carts[i].game.price;
+    return result;
+  }
+
 }
