@@ -16,9 +16,12 @@ import { RecoveryComponent } from './components/auth/recovery/recovery.component
 import { GamePreviewComponent } from './components/small-components/game-preview/game-preview.component';
 import { DataService } from './services/data.service';
 import { AdminComponent } from './components/admin/admin.component';
-import { UpdateReviewComponent } from './components/admin/update-review/update-review.component';
 import { UpdateGameComponent } from './components/admin/update-game/update-game.component';
 import { UpdateGenresComponent } from './components/admin/update-genres/update-genres.component';
+import { OwnershipComponent } from './components/small-components/ownership/ownership.component';
+import { UpdateReviewComponent } from './components/library/update-review/update-review.component';
+import { ReviewComponent } from './components/small-components/review/review.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { UpdateGenresComponent } from './components/admin/update-genres/update-g
     AdminComponent,
     UpdateGameComponent,
     UpdateReviewComponent,
-    UpdateGenresComponent
+    UpdateGenresComponent,
+    OwnershipComponent,
+    ReviewsComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

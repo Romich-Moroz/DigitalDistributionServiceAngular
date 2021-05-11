@@ -7,7 +7,7 @@
       <div>
         <h4 class="card-title" style="display:inline">{{ game.name }}</h4>
         <label style="display: inline; float:right" *ngIf="game.reviewCount == 0">Not rated yet</label>
-        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0">{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
+        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0" [routerLink]="['/reviews',game.gameId]" >{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
       </div>
       <div style="margin-top:5px">
         <h6 style="" class="card-subtitle mb-2 text-muted">Developer: {{game.developer}}</h6>

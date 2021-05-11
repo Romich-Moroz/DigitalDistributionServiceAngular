@@ -5,7 +5,9 @@ import { catchError } from 'rxjs/operators';
 import { Cart } from '../../models/cart';
 import { Game } from '../../models/game';
 import { Genre } from '../../models/genre';
+import { Ownership } from '../../models/ownership';
 import { Page } from '../../models/page';
+import { Review } from '../../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +50,36 @@ export class StoreService {
 
   checkout() {
     return this.http.post(this.apiUrl + "/store/carts/checkout", '', this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  getOwnerships() {
+    return this.http.get<Ownership[]>(this.apiUrl + "/store/ownerships", this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  getReview(ownershipId: number) {
+    return this.http.get<Review>(this.apiUrl + "/store/ownerships/" + ownershipId+"/reviews", this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  addReview(ownershipId: number, rating: number, comment: string) {
+    var params = new FormData();
+    params.append("rating", rating.toString());
+    params.append("comment", comment);
+    return this.http.post(this.apiUrl + "/store/ownerships/" + ownershipId + "/reviews",params, this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  updateReview(ownershipId: number, reviewId: number, rating: number, comment: string) {
+    var params = new FormData();
+    params.append("rating", rating.toString());
+    params.append("comment", comment);
+    return this.http.put(this.apiUrl + "/store/ownerships/" + ownershipId + "/reviews/" + reviewId, params, this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  deleteReview(ownershipId: number, reviewId: number) {
+    return this.http.delete(this.apiUrl + "/store/ownerships/" + ownershipId + "/reviews/" + reviewId, this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  getGameReviews(gameId: number) {
+    return this.http.get<Review[]>(this.apiUrl + "/store/games/" + gameId + "/reviews", this.options).pipe(catchError(this.httpErrorHandler));
   }
 
 

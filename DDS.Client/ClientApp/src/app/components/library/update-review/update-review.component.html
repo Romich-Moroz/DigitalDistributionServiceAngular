@@ -1,0 +1,20 @@
+<form class="card p-3" [formGroup]="form" (ngSubmit)="onSubmit()" style="width:50%; margin: 0 auto; margin-top: 200px">
+  <h3 class="text-center">Update review</h3>
+  <span style="color:red" class="text-center" [hidden]="error == null">{{error}}</span>
+  <span class="text-center" [hidden]="message == null">{{message}}</span>
+
+  <div class="form-group">
+    <label>Rating</label>
+    <input type="range" min="1" step="1" max="10" formControlName="rating" class="form-control" [ngModel]="review?.rating" placeholder="Enter rating 1..10" required>
+    <label style="float:left">1</label>
+    <label style="float:right">10</label>
+  </div>
+  <div class="form-group">
+    <label>Comment</label>
+    <textarea *ngIf="review != null" type="text" rows="5" formControlName="comment" class="form-control" [(ngModel)]="review.comment" placeholder="Comment..." required></textarea>
+  </div>
+  <div>
+    <button type="button" style="width:20%; margin-top:10px; float:left; display:inline" (click)="onReviewDelete()" [disabled]="review?.reviewId == 0" class="btn btn-danger">Delete</button>
+    <button type="submit" style="width:60%; margin-top:10px; float:right; display:inline" [disabled]="!form.valid" class="btn btn-primary">Update</button>
+  </div>
+</form>

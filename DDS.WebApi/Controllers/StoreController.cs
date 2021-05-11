@@ -23,7 +23,7 @@ namespace DDS.WebApi.Controllers
 
         private async Task<PagedList<Game>> GetPagedList(PageInfo pageInfo, string gameName, decimal minPrice, decimal maxPrice, int genreId, Expression<Func<Game, bool>> predicate = null)
         {
-            IQueryable<Game> query = Context.Games.Include(g => g.GameGenres).ThenInclude(gg => gg.Genre);
+            IQueryable<Game> query = Context.Games.Include(g => g.GameGenres).ThenInclude(gg => gg.Genre).OrderBy(g => g.Name);
             if (predicate != null)
             {
                 query = query.Where(predicate);
@@ -65,7 +65,7 @@ namespace DDS.WebApi.Controllers
         [HttpGet("games/{GameId}/reviews")]
         public async Task<IActionResult> GetGameReviews(int GameId)
         {
-            return Ok(await Context.Reviews.Where(r => r.Ownership.GameId == GameId).ToListAsync());
+            return Ok(await Context.Reviews.Where(r => r.Ownership.GameId == GameId).Include(r => r.Ownership).ThenInclude(o => o.User).OrderByDescending(r => r.Date).ToListAsync());
         }
 
         [AllowAnonymous]
@@ -82,14 +82,14 @@ namespace DDS.WebApi.Controllers
         [HttpGet("genres")]
         public async Task<IActionResult> GetGenres()
         {
-            return Ok(await Context.Genres.ToListAsync());
+            return Ok(await Context.Genres.OrderBy(g => g.Name).ToListAsync());
         }
 
 
         [HttpGet("carts")]
         public async Task<IActionResult> GetCart()
         {
-            return Ok(await Context.Carts.Include(c => c.Game).Where(c => c.User.Email == User.Identity.Name).ToListAsync());
+            return Ok(await Context.Carts.Include(c => c.Game).Where(c => c.User.Email == User.Identity.Name).OrderBy(c => c.Date).ToListAsync());
         }
 
         [HttpPost("games/{GameId}/carts")]
@@ -135,7 +135,13 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> GetOwnerships()
         {
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
-            return Ok(await Context.Ownerships.Include(o => o.Game).Where(o => o.UserId == user.UserId).ToListAsync());
+            return Ok(await Context.Ownerships
+                .Include(o => o.Game)
+                .ThenInclude(g => g.GameGenres)
+                .ThenInclude(g => g.Genre)
+                .Where(o => o.UserId == user.UserId)
+                .OrderByDescending(o => o.Date)
+                .ToListAsync());
         }
 
 
@@ -153,6 +159,12 @@ namespace DDS.WebApi.Controllers
             else Context.Update(review);
             await Context.SaveChangesAsync();
             return review;
+        }
+
+        [HttpGet("ownerships/{OwnershipId}/reviews")]
+        public async Task<IActionResult> GetGameReview(int OwnershipId)
+        {
+            return Ok(await Context.Reviews.FirstOrDefaultAsync(r => r.OwnershipId == OwnershipId));
         }
 
         [HttpPost("ownerships/{OwnershipId}/reviews")]

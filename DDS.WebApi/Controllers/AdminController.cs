@@ -52,7 +52,7 @@ namespace DDS.WebApi.Controllers
 
             Game tmp;
             if (game.GameId != 0)
-                tmp = await Context.Games.FirstOrDefaultAsync(g => g.GameId == game.GameId);
+                tmp = await Context.Games.Include(g => g.GameGenres).ThenInclude(g => g.Genre).FirstOrDefaultAsync(g => g.GameId == game.GameId);
             else
                 tmp = new Game();
 
