@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "userAlreadyExists": "Пользователь уже существует",
+    "email": "Почта",
+    "emailPlaceholder": "Почта...",
+    "passwordPlaceholder": "Пароль...",
+    "password": "Пароль",
+    "forgot": "Забыли пароль",
+    "noAcc": "Нет аккаунта",
+    "accRec": "Восстановление аккаунта",
+    "send": "Отправить",
+    "backSignIn": "К входу в аккаунт",
+    "submit": "Отправить"
+  }
+}

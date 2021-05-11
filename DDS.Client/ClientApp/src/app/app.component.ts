@@ -3,32 +3,23 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from './services/data.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Digital Distribution Service';
   dataService: DataService;
 
-  siteLanguage: string = 'English';
-  siteLocale: string;
-  languageList = [
-    { code: 'en', label: 'English' },
-    { code: 'ru', label: 'Русский' }
-  ];
-
-  constructor(dataService: DataService, private router: Router)
+  constructor(public translate: TranslateService, dataService: DataService, private router: Router)
   {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang('en');
     this.dataService = dataService;
     this.dataService.authService.check();
-  }
-
-  ngOnInit() {
-    this.siteLocale = window.location.pathname.split('/')[1];
-    this.siteLanguage = this.languageList.find(f => f.code === this.siteLocale).label;
   }
 
   onSignOut() {
@@ -37,6 +28,11 @@ export class AppComponent implements OnInit {
       this.dataService.authService.currentUser = null;
       this.router.navigate(["/catalog"]);
     });
+  }
+
+  switchLang(lang: string) {
+    console.log(lang);
+    this.translate.use(lang);
   }
 
 }

@@ -23,10 +23,11 @@
           <a class="nav-link" routerLink="/admin" routerLinkActive="active" i18n="Admin">Admin</a>
         </li>
         <li>
-          <select class="form-select" data-width="fit">
-            <option>English</option>
-            <option>Русский</option>
-          </select>
+          <span class="form-inline">
+            <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+              <option *ngFor="let language of translate.getLangs()" [value]="language" [selected]="language === translate.currentLang">{{ language }}</option>
+            </select>
+          </span>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">

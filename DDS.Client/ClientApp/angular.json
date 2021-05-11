@@ -9,17 +9,10 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "locales": {
-          "en": "src/locales/messages.en.xlf",
-          "ru": "src/locales/messages.ru.xlf"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": true,
             "outputPath": "dist/ClientApp",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -80,12 +73,6 @@
           "configurations": {
             "production": {
               "browserTarget": "ClientApp:build:production"
-            },
-            "en": {
-              "browserTarget": "ClientApp:build:en"
-            },
-            "ru": {
-              "browserTarget": "ClientApp:build:ru"
             }
           }
         },
