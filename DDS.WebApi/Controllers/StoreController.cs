@@ -55,9 +55,9 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> GetGames(int page, int pageSize, string gameName, decimal minPrice, decimal maxPrice, int genreId)
         {
             if (page <= 0)
-                return UnprocessableEntity("Page size is less or equal to zero");
+                return UnprocessableEntity(Json("Page size is less or equal to zero"));
             if (pageSize <= 0)
-                return UnprocessableEntity("Page size is less or equal to zero");
+                return UnprocessableEntity(Json("Page size is less or equal to zero"));
             return Ok(await GetPagedList(new PageInfo(page, pageSize), gameName, minPrice, maxPrice, genreId));
         }
 
@@ -89,7 +89,7 @@ namespace DDS.WebApi.Controllers
         [HttpGet("carts")]
         public async Task<IActionResult> GetCart()
         {
-            return Ok(await Context.Carts.Where(c => c.User.Email == User.Identity.Name).ToListAsync());
+            return Ok(await Context.Carts.Include(c => c.Game).Where(c => c.User.Email == User.Identity.Name).ToListAsync());
         }
 
         [HttpPost("games/{GameId}/carts")]
@@ -97,9 +97,9 @@ namespace DDS.WebApi.Controllers
         {
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
             if (await Context.Carts.Include(c => c.Game).AnyAsync(c => c.UserId == user.UserId && c.GameId == GameId && c.Game.IsRemoved == false))
-                return Conflict("Game is already in cart");
+                return Conflict(Json("Game is already in cart"));
             if (await Context.Ownerships.AnyAsync(o => o.GameId == GameId && o.UserId == user.UserId))
-                return Conflict("Game is already owned");
+                return Conflict(Json("Game is already owned"));
             var cart = new Cart { GameId = GameId, UserId = user.UserId };
             Context.Carts.Add(cart);
             await Context.SaveChangesAsync();
@@ -112,7 +112,7 @@ namespace DDS.WebApi.Controllers
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
             var cart = await Context.Carts.FirstOrDefaultAsync(c => c.UserId == user.UserId && c.CartId == CartId);
             if (cart == null)
-                return Conflict("Cart item does not exist");
+                return Conflict(Json("Cart item does not exist"));
             Context.Carts.Remove(cart);
             await Context.SaveChangesAsync();
             return Ok();
@@ -124,7 +124,7 @@ namespace DDS.WebApi.Controllers
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
             var carts = await Context.Carts.Include(c => c.Game).Where(c => c.UserId == user.UserId).ToListAsync();
             if (carts.Count == 0)
-                return Conflict("Cart is empty");
+                return Conflict(Json("Cart is empty"));
             Context.Ownerships.AddRange(carts.Select(c => new Ownership { GameId = c.GameId, Price = c.Game.Price, UserId = c.UserId }));
             Context.Carts.RemoveRange(carts);
             await Context.SaveChangesAsync();
@@ -161,9 +161,9 @@ namespace DDS.WebApi.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
             if (!await Context.Ownerships.AnyAsync(o => o.OwnershipId == model.OwnershipId))
-                return Conflict("You do not own this product");
+                return Conflict(Json("You do not own this product"));
             if (await Context.Reviews.AnyAsync(r => r.OwnershipId == model.OwnershipId))
-                return Conflict("Review already exists");
+                return Conflict(Json("Review already exists"));
             return Ok(await MergeReview(model));
         }
 
@@ -171,13 +171,13 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> UpdateGameReview(ReviewModel model)
         {
             if (model.ReviewId == 0)
-                return UnprocessableEntity("Invalid review id");
+                return UnprocessableEntity(Json("Invalid review id"));
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
             if (!await Context.Ownerships.AnyAsync(o => o.OwnershipId == model.OwnershipId))
-                return Conflict("You do not own this product");
+                return Conflict(Json("You do not own this product"));
             if (!await Context.Reviews.AnyAsync(r => r.OwnershipId == model.OwnershipId))
-                return Conflict("Review does not exists");
+                return Conflict(Json("Review does not exists"));
 
             return Ok(await MergeReview(model));
         }
@@ -188,7 +188,7 @@ namespace DDS.WebApi.Controllers
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
             var review = await Context.Reviews.FirstOrDefaultAsync(r => r.OwnershipId == OwnershipId && r.ReviewId == ReviewId && r.Ownership.UserId == user.UserId);
             if (review == null)
-                return UnprocessableEntity("Invalid review id");
+                return UnprocessableEntity(Json("Invalid review id"));
             Context.Reviews.Remove(review);
             await Context.SaveChangesAsync();
             return Ok();

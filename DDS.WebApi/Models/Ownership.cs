@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -20,7 +19,6 @@ namespace DDS.WebApi.Models
         public decimal Price { get; set; }
 
         public virtual Game Game { get; set; }
-        [JsonIgnore]
         public virtual User User { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -15,7 +14,6 @@ namespace DDS.WebApi.Models
         public int GenreId { get; set; }
         public string Name { get; set; }
 
-        [JsonIgnore]
         public virtual ICollection<GameGenre> GameGenres { get; set; }
     }
 }

@@ -22,7 +22,10 @@ namespace DDS.WebApi
                 });
 
             services.AddScoped<ApplicationContext>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson((options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }));
             services.AddCors();
         }
 
@@ -36,7 +39,6 @@ namespace DDS.WebApi
             app.UseCors(
                 options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
             );
-
 
             app.UseCookiePolicy(new CookiePolicyOptions
             {

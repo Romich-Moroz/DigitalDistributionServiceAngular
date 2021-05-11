@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -22,7 +21,6 @@ namespace DDS.WebApi.Models
         public virtual Role Role { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Ownership> Ownerships { get; set; }
-        [JsonIgnore]
         public virtual ICollection<UserRecovery> UserRecoveries { get; set; }
     }
 }

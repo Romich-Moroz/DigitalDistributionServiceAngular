@@ -18,7 +18,8 @@
   </div>
   <div class="card-footer">
     <p style="display:inline;" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
-    <button type="button" style="float:right" class="btn btn-success">Add to cart</button>
+    <button type="button" style="float:right" class="btn btn-success" [disabled]="addedToCart" (click)="onAddToCart(game.gameId)" >Add to cart</button>
     <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1">Edit</a>
+    <span style="color:red; float:right; margin-top:7px; margin-right:5px" [hidden]="error == null">{{error}}</span>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { Cart } from '../../models/cart';
 import { Game } from '../../models/game';
 import { Genre } from '../../models/genre';
 import { Page } from '../../models/page';
@@ -32,5 +33,22 @@ export class StoreService {
   getGame(gameId: number) {
     return this.http.get<Game>(this.apiUrl + "/store/games/" + gameId, this.options).pipe(catchError(this.httpErrorHandler));
   }
+
+  getCart(): Observable<Cart[]> {
+    return this.http.get<Cart[]>(this.apiUrl + "/store/carts", this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  addToCart(gameId: number) {
+    return this.http.post<Cart>(this.apiUrl + "/store/games/"+gameId+"/carts",'', this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  deleteFromCart(cartId: number) {
+    return this.http.delete(this.apiUrl + "/store/carts/" + cartId, this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
+  checkout() {
+    return this.http.post(this.apiUrl + "/store/carts/checkout", '', this.options).pipe(catchError(this.httpErrorHandler));
+  }
+
 
 }

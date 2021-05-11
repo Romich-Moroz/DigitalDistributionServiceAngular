@@ -1,1 +1,17 @@
-<p>cart works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Game</th>
+      <th scope="col">Addition date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of carts">
+      <td>{{ cart.game.name }}</td>
+      <td>{{ cart.date | date:'dd/MM/yyyy' }}</td>
+      <td><button (click)="onDeleteCart(cart.cartId)" class="btn btn-danger">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+<button (click)="onCheckout()" [disabled]="carts.length == 0" class="btn btn-success">Checkout</button>

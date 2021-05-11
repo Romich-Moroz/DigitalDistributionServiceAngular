@@ -12,11 +12,12 @@ import { DataService } from '../../../services/data.service';
 export class GamePreviewComponent {
   @Input() game: Game;
   dataService: DataService;
-
+  addedToCart: boolean = false;
+  error: string;
   constructor(dataService: DataService) { this.dataService = dataService; }
 
-  onAddToCart() {
-
+  onAddToCart(gameId: number) {
+    this.dataService.storeService.addToCart(gameId).subscribe(() => { this.addedToCart = true }, (error) => this.error = error);
   }
 }
 
