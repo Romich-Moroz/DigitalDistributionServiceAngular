@@ -13,6 +13,10 @@ export class GamePreviewComponent {
   @Input() game: Game;
   dataService: DataService;
 
-  constructor(dataService: DataService, private sanitizer: DomSanitizer) { this.dataService = dataService; }
+  constructor(dataService: DataService) { this.dataService = dataService; }
+
+  onAddToCart() {
+
+  }
 }
 

@@ -1,10 +1,29 @@
-<div class="input-group">
-  <div class="form-outline">
-    <input type="search" id="form1" class="form-control" />
-    <label class="form-label" for="form1">Search</label>
-  </div>
-  <button type="button" class="btn btn-primary">
-    <i class="fas fa-search"></i>
-  </button>
+<div class="card p-3">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit(1)">
+    <input class="form-control" type="search" formControlName="name" placeholder="Search" style="width:30%; display:inline; margin-right: 10px" aria-label="Search">
+    <select class="form-select" formControlName="genreId" aria-label="Default select example" style="width:20%; display:inline; margin-right: 10px">
+      <option value="0">All genres</option>
+      <option *ngFor="let genre of genres" [value]="genre.genreId">{{genre.name}}</option>
+    </select>
+    <input class="form-control" type="number" formControlName="minPrice" placeholder="Min price" style="width:10%; display:inline; margin-right: 10px">
+    <input class="form-control" type="number" formControlName="maxPrice" placeholder="Max price" style="width:10%; display:inline; margin-right: 10px">
+    <button class="btn btn-outline-primary my-2 my-sm-0" style="display:inline" type="submit">Search</button>
+  </form>
+  <nav aria-label="Page navigation example" style="margin-top:20px">
+    <ul class="pagination">
+      <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)">Previous</a></li>
+      <li class="page-item" [ngClass]="page?.page == index+1 ? 'active' : ''" *ngFor="let a of createRange(page?.totalPages); let index = index" style="cursor:pointer"><a class="page-link" (click)="onSubmit(index+1)">{{index + 1}}</a></li>
+      <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)">Next</a></li>
+    </ul>
+  </nav>
 </div>
-<app-game-preview *ngFor="let game of this.page?.items" [game]="game"></app-game-preview>
+
+<app-game-preview *ngFor="let game of page?.items" [game]="game"></app-game-preview>
+
+<nav aria-label="Page navigation example" style="margin-top:20px; padding-bottom:50px">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)">Previous</a></li>
+    <li class="page-item" [ngClass]="page?.page == index+1 ? 'active' : ''" *ngFor="let a of createRange(page?.totalPages); let index = index" style="cursor:pointer" ><a class="page-link" (click)="onSubmit(index+1)">{{index + 1}}</a></li>
+    <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)">Next</a></li>
+  </ul>
+</nav>
