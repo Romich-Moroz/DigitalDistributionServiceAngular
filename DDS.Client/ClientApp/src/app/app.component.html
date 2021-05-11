@@ -1,6 +1,6 @@
 <div class="container h-100">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/catalog" routerLinkActive="active">Digital distribution service</a>
+    <a class="navbar-brand" routerLink="/catalog" routerLinkActive="active" >Digital distribution service</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,28 +8,34 @@
     <div class="navbar-collapse collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
+          <a class="nav-link" routerLink="/catalog" routerLinkActive="active" i18n="Catalog">Catalog</a>
         </li>
         <li class="nav-ite" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active" i18n="Cart">Cart</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/library" routerLinkActive="active">Library</a>
+          <a class="nav-link" routerLink="/library" routerLinkActive="active" i18n="Library">Library</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
+          <a class="nav-link" routerLink="/account" routerLinkActive="active" i18n="Account">Account</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser?.roleId == 1">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active" i18n="Admin">Admin</a>
+        </li>
+        <li>
+          <select class="form-select" data-width="fit">
+            <option>English</option>
+            <option>Русский</option>
+          </select>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="dataService.authService.currentUser == null">
-          <a class="nav-link" routerLink="/authentication" routerLinkActive="active">Sign In</a>
+          <a class="nav-link" routerLink="/authentication" routerLinkActive="active" i18n="Sign In">Sign In</a>
         </li>
 
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer">Sign Out</a>
+          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer" i18n="Sign Out">Sign Out</a>
         </li>
       </ul>
     </div>

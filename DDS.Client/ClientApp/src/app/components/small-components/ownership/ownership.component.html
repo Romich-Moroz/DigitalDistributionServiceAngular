@@ -6,17 +6,17 @@
     <div class="card-body">
       <div>
         <h4 class="card-title" style="display:inline">{{ ownership.game.name }}</h4>
-        <label style="display: inline; float:right">Ownership date: {{ownership.date | date:'dd/MM/yyyy'}}</label>
+        <label style="display: inline; float:right">{{ownership.date | date:'dd/MM/yyyy'}}</label>
       </div>
       <div style="margin-top:5px">
-        <h6 style="" class="card-subtitle mb-2 text-muted">Developer: {{ownership.game.developer}}</h6>
+        <h6 style="" class="card-subtitle mb-2 text-muted">{{ownership.game.developer}}</h6>
         <p>{{ownership.game.description}} </p>
-        <h6 style="float:right">Bought for {{ownership.price }}$</h6>
+        <h6 style="float:right">{{ownership.price }}$</h6>
       </div>
     </div>
   </div>
   <div class="card-footer">
     <p style="display:inline;" *ngFor="let genre of ownership.game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
-    <button type="button" style="float:right" class="btn btn-success" [routerLink]="['/update-review',ownership.ownershipId]">Update review</button>
+    <button type="button" style="float:right" class="btn btn-success" [routerLink]="['/update-review',ownership.ownershipId]" i18n="Update review">Update review</button>
   </div>
 </div>

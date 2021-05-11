@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Game</th>
-      <th scope="col">Price</th>
-      <th scope="col">Addition date</th>
-      <th scope="col">Action</th>
+      <th scope="col" i18n="Game">Game</th>
+      <th scope="col" i18n="Price">Price</th>
+      <th scope="col" i18n="Addition date">Addition date</th>
+      <th scope="col" i18n="Action">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -12,14 +12,14 @@
       <td>{{ cart.game.name }}</td>
       <td>{{ cart.game.price }}$</td>
       <td>{{ cart.date | date:'dd/MM/yyyy' }}</td>
-      <td><button (click)="onDeleteCart(cart.cartId)" class="btn btn-danger">Delete</button></td>
+      <td><button (click)="onDeleteCart(cart.cartId)" class="btn btn-danger" i18n="Delete">Delete</button></td>
     </tr>
     <tr>
-      <td>Total: </td>
+      <td i18n="Total:">Total: </td>
       <td>{{ getSum() }} $</td>
       <td></td>
       <td></td>
     </tr>
   </tbody>
 </table>
-<button (click)="onCheckout()" [disabled]="carts?.length == 0" class="btn btn-success">Checkout</button>
+<button (click)="onCheckout()" [disabled]="carts?.length == 0" class="btn btn-success" i18n="Checkout">Checkout</button>
