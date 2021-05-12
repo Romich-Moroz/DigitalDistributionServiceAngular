@@ -10,9 +10,5 @@ import { DataService } from '../../../services/data.service';
 })
 export class OwnershipComponent {
   @Input() ownership: Ownership;
-  dataService: DataService;
-  constructor(dataService: DataService) { this.dataService = dataService; }
-
-  onUpdateReview
-
+  constructor() {}
 }

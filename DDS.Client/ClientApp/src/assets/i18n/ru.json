@@ -55,9 +55,35 @@
     "previous": "Пред.",
     "next": "След."
   },
+  "library": {
+    "updateReview": "Обновить обзор",
+    "rating": "Рейтинг",
+    "comment": "Комментарий",
+    "commentPlaceholder": "Комментарий"
+  },
+  "nav": {
+    "catalog": "Каталог",
+    "cart": "Корзина",
+    "library": "Библиотека",
+    "account": "Аккаунт",
+    "admin": "Админ",
+    "signIn": "Вход",
+    "signOut": "Выход"
+  },
+  "game": {
+    "notRatedYet": "Нет оценок",
+    "votes": "Обзоров",
+    "toCart": "В корзину",
+    "edit": "Изменить",
+    "alreadyOwned": "Игра уже в корзине или приобретена",
+    "ownershipDate": "Дата покупки",
+    "boughtFor": "Стоимость",
+    "updateReview": "Обновить обзор"
+  },
   "success": "Success",
   "genre": "Жанр",
   "action": "Действие",
   "delete": "Удалить",
+  "update": "Обновить",
   "add": "Добавить"
 }

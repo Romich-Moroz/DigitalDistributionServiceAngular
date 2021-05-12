@@ -55,9 +55,35 @@
     "previous": "Previous",
     "next": "Next"
   },
+  "library": {
+    "updateReview": "Update review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "commentPlaceholder": "Comment"
+  },
+  "nav": {
+    "catalog": "Catalog",
+    "cart": "Cart",
+    "library": "Library",
+    "account": "Account",
+    "admin": "Admin",
+    "signIn": "SignIn",
+    "signOut": "SignOut"
+  },
+  "game": {
+    "notRatedYet": "Not rated yet",
+    "votes": "Reviews",
+    "toCart": "To cart",
+    "edit": "Edit",
+    "alreadyOwned": "Game already in cart or owned",
+    "ownershipDate": "Ownership date",
+    "boughtFor": "Bought for",
+    "updateReview": "Update review"
+  },
   "success": "Success",
   "genre": "Genre",
   "action": "Action",
   "delete": "Delete",
+  "update": "Update",
   "add": "Add"
 }

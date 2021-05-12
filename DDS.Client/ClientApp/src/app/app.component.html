@@ -8,19 +8,19 @@
     <div class="navbar-collapse collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/catalog" routerLinkActive="active" i18n="Catalog">Catalog</a>
+          <a class="nav-link" routerLink="/catalog" routerLinkActive="active">{{'nav.catalog' | translate}}</a>
         </li>
         <li class="nav-ite" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/cart" routerLinkActive="active" i18n="Cart">Cart</a>
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active" >{{'nav.cart' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/library" routerLinkActive="active" i18n="Library">Library</a>
+          <a class="nav-link" routerLink="/library" routerLinkActive="active">{{'nav.library' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/account" routerLinkActive="active" i18n="Account">Account</a>
+          <a class="nav-link" routerLink="/account" routerLinkActive="active">{{'nav.account' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser?.roleId == 1">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active" i18n="Admin">Admin</a>
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">{{'nav.admin' | translate}}</a>
         </li>
         <li>
           <span class="form-inline">
@@ -32,11 +32,11 @@
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="dataService.authService.currentUser == null">
-          <a class="nav-link" routerLink="/authentication" routerLinkActive="active" i18n="Sign In">Sign In</a>
+          <a class="nav-link" routerLink="/authentication" routerLinkActive="active">{{'nav.signIn' | translate}}</a>
         </li>
 
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer" i18n="Sign Out">Sign Out</a>
+          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer">{{'nav.signOut' | translate}}</a>
         </li>
       </ul>
     </div>
