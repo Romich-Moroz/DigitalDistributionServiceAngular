@@ -12,6 +12,7 @@ namespace DDS.WebApi.Models
         public DateTime Date { get; set; }
         public string Comment { get; set; }
 
+
         public virtual Ownership Ownership { get; set; }
     }
 }

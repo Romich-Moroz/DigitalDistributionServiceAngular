@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -23,8 +24,10 @@ namespace DDS.WebApi.Models
         public byte[] Image { get; set; }
         public bool IsRemoved { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<GameGenre> GameGenres { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Ownership> Ownerships { get; set; }
     }
 }
