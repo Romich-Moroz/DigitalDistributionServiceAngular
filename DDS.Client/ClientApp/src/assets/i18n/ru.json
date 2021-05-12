@@ -13,5 +13,35 @@
     "send": "Отправить",
     "backSignIn": "К входу в аккаунт",
     "submit": "Отправить"
-  }
+  },
+  "acc": {
+    "accSettings": "Настройки аккаунта",
+    "newPassword": "Новый пароль",
+    "newPasswordPlaceholder": "Пароль",
+    "changePassword": "Сменить пароль"
+  },
+  "admin": {
+    "adminPanel": "Панель администратора",
+    "manageGenres": "Управление жанрами",
+    "addGame": "Добавить игру",
+    "updateGame": "Обновить игру",
+    "gameName": "Название игры",
+    "gameNamePlaceholder": "Название",
+    "developer": "Разработчик",
+    "developerPlaceholder": "Разработчик",
+    "description": "Описание",
+    "descriptionPlaceholder": "Описание",
+    "price": "Цена",
+    "pricePlaceholder": "Цена",
+    "genresList": "Список жанров",
+    "addGenre": "Добавить жанр",
+    "genreAlreadyExists": "Жанр уже существует",
+    "genreManagement": "Управление жанрами",
+    "genreNamePlaceholder": "Жанр"
+  },
+  "success": "Success",
+  "genre": "Жанр",
+  "action": "Действие",
+  "delete": "Удалить",
+  "add": "Добавить"
 }

@@ -1,10 +1,10 @@
 <form class="card p-3" [formGroup]="settingsForm" style="margin-top: 20px">
-  <h3 class="text-center" i18n="Account settings">Account settings</h3>
-  <span style="color:red; text-align:center" [hidden]="error == null" i18n="Invalid data">{{error}}</span>
-  <span style=" text-align:center" [hidden]="message == null" i18n="Success">{{message}}</span>
+  <h3 class="text-center">{{'acc.accSettings' | translate}}</h3>
+  <span style="color:red; text-align:center" [hidden]="error == null">{{error | translate}}</span>
+  <span style=" text-align:center" [hidden]="message == null">{{'success' | translate}}</span>
   <div class="form-group">
-    <label i18n="New password">New password</label>
-    <input type="text" style="width:50%; display:inline; margin-left:5px; margin-right:5px" formControlName="newPassword" class="form-control" required>
-    <button type="button" style="display:inline" (click)="onChangePassword()" [disabled]="!settingsForm.get('newPassword').valid" class="btn btn-primary" i18n="Change password">Change password</button>
+    <label>{{'acc.newPassword' | translate}}</label>
+    <input type="text" style="width:50%; display:inline; margin-left:5px; margin-right:5px" formControlName="newPassword" placeholder="{{'acc.newPasswordPlaceholder' | translate}}"  class="form-control" required>
+    <button type="button" style="display:inline" (click)="onChangePassword()" [disabled]="!settingsForm.get('newPassword').valid" class="btn btn-primary">placeholder="{{'acc.changePassword' | translate}}" </button>
   </div>
 </form>

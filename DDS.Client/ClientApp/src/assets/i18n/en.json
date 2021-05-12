@@ -2,7 +2,7 @@
   "auth": {
     "signIn": "Sign In",
     "signUp": "Sign Up",
-    "userAlreadyExists" :  "User already exists",
+    "userAlreadyExists": "User already exists",
     "email": "Email",
     "emailPlaceholder": "Enter email...",
     "password": "Password",
@@ -14,5 +14,34 @@
     "backSignIn": "Back to sign in",
     "submit": "Submit"
   },
-  "success": "Success"
+  "acc": {
+    "accSettings": "Account settings",
+    "newPassword": "New password",
+    "newPasswordPlaceholder": "New password",
+    "changePassword": "Change password"
+  },
+  "admin": {
+    "adminPanel": "Admin panel",
+    "manageGenres": "Manage genres",
+    "addGame": "Add game",
+    "updateGame": "Update game",
+    "gameName": "Name",
+    "gameNamePlaceholder": "Game name",
+    "developer": "Developer",
+    "developerPlaceholder": "Developer",
+    "description": "Description",
+    "descriptionPlaceholder": "Description",
+    "price": "Price",
+    "pricePlaceholder": "Price",
+    "genresList": "Genres list",
+    "addGenre": "Add genre",
+    "genreAlreadyExists": "Genre already exists",
+    "genreManagement": "Genres management",
+    "genreNamePlaceholder": "Genre"
+  },
+  "success": "Success",
+  "genre": "Genre",
+  "action": "Action",
+  "delete": "Delete",
+  "add": "Add"
 }
