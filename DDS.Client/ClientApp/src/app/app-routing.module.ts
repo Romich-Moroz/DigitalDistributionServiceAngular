@@ -12,6 +12,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { LibraryComponent } from './components/library/library.component';
 import { UpdateReviewComponent } from './components/library/update-review/update-review.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { UserGuard } from './guards/user/user.guard';
 
 const routes: Routes =
 
@@ -20,13 +22,13 @@ const routes: Routes =
     { path: 'registration', component: RegistrationComponent },
     { path: 'recovery', component: RecoveryComponent },
     { path: 'catalog', component: CatalogComponent },
-    { path: 'cart', component: CartComponent },
-    { path: 'account', component: AccountComponent },
-    { path: 'library', component: LibraryComponent },
-    { path: 'admin', component: AdminComponent },
-    { path: 'update-genres', component: UpdateGenresComponent },
-    { path: 'update-game/:id', component: UpdateGameComponent },
-    { path: 'update-review/:id', component: UpdateReviewComponent },
+    { path: 'cart', component: CartComponent, canActivate: [UserGuard] },
+    { path: 'account', component: AccountComponent, canActivate: [UserGuard] },
+    { path: 'library', component: LibraryComponent, canActivate: [UserGuard] },
+    { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+    { path: 'update-genres', component: UpdateGenresComponent, canActivate: [AdminGuard] },
+    { path: 'update-game/:id', component: UpdateGameComponent, canActivate: [AdminGuard] },
+    { path: 'update-review/:id', component: UpdateReviewComponent, canActivate: [UserGuard] },
     { path: 'reviews/:id', component: ReviewsComponent },
     //{ path: '**', component: PageNotFoundComponent  }
   ];

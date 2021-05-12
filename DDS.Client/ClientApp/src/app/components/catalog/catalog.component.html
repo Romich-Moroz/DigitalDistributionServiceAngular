@@ -18,7 +18,7 @@
   </nav>
 </div>
 
-<app-game-preview *ngFor="let game of page?.items" [game]="game"></app-game-preview>
+<app-game-preview *ngFor="let game of page?.items" [game]="game" (deleteEvent)="onSubmit(1)"></app-game-preview>
 
 <nav aria-label="Page navigation example" style="margin-top:20px; padding-bottom:50px">
   <ul class="pagination">

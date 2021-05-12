@@ -20,12 +20,9 @@ namespace DDS.WebApi
                 {
                     options.LoginPath = new PathString("/authentication");
                 });
-
+            services.AddAuthorization();
             services.AddScoped<ApplicationContext>();
-            services.AddControllers().AddNewtonsoftJson((options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-            }));
+            services.AddControllers();
             services.AddCors();
         }
 
@@ -54,6 +51,7 @@ namespace DDS.WebApi
 
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -23,7 +23,7 @@ namespace DDS.WebApi.Controllers
 
         private async Task<PagedList<Game>> GetPagedList(PageInfo pageInfo, string gameName, decimal minPrice, decimal maxPrice, int genreId, Expression<Func<Game, bool>> predicate = null)
         {
-            IQueryable<Game> query = Context.Games.Include(g => g.GameGenres).ThenInclude(gg => gg.Genre).OrderBy(g => g.Name);
+            IQueryable<Game> query = Context.Games.Include(g => g.GameGenres).ThenInclude(gg => gg.Genre).Where(g => !g.IsRemoved).OrderBy(g => g.Name);
             if (predicate != null)
             {
                 query = query.Where(predicate);
@@ -135,13 +135,14 @@ namespace DDS.WebApi.Controllers
         public async Task<IActionResult> GetOwnerships()
         {
             var user = await Context.Users.FirstAsync(u => u.Email == User.Identity.Name);
-            return Ok(await Context.Ownerships
+            var tmp = Ok(await Context.Ownerships
                 .Include(o => o.Game)
                 .ThenInclude(g => g.GameGenres)
                 .ThenInclude(g => g.Genre)
                 .Where(o => o.UserId == user.UserId)
                 .OrderByDescending(o => o.Date)
                 .ToListAsync());
+            return tmp;
         }
 
 

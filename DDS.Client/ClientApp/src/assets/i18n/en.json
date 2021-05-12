@@ -67,8 +67,8 @@
     "library": "Library",
     "account": "Account",
     "admin": "Admin",
-    "signIn": "SignIn",
-    "signOut": "SignOut"
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
   },
   "game": {
     "notRatedYet": "Not rated yet",

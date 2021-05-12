@@ -1,5 +1,7 @@
 ﻿#nullable disable
 
+using System.Text.Json.Serialization;
+
 namespace DDS.WebApi.Models
 {
     public partial class UserRecovery
@@ -8,6 +10,7 @@ namespace DDS.WebApi.Models
         public int UserId { get; set; }
         public string RecoveryLink { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
     }
 }

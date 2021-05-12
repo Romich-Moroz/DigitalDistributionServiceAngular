@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Digital Distribution Service';
   dataService: DataService;
 
@@ -21,6 +20,9 @@ export class AppComponent {
     this.dataService = dataService;
     this.dataService.authService.check();
   }
+  ngOnInit(): void {
+      this.router.navigate["/catalog"];
+    }
 
   onSignOut() {
     this.dataService.authService.logout().subscribe(() =>

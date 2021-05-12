@@ -7,7 +7,7 @@
       <div>
         <h4 class="card-title" style="display:inline">{{ game.name }}</h4>
         <label style="display: inline; float:right" *ngIf="game.reviewCount == 0">{{'game.notRatedYet' | translate}}</label>
-        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0" [routerLink]="['/reviews',game.gameId]">{{ game.rating }}/10 || {{ game.reviewCount }} {{'game.votes' | translate}}</a>
+        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0" [routerLink]="['/reviews',game.gameId]">{{ game.rating }}/10 | {{ game.reviewCount }} {{'game.votes' | translate}}</a>
       </div>
       <div style="margin-top:5px">
         <h6 style="" class="card-subtitle mb-2 text-muted">{{game.developer}}</h6>
@@ -17,9 +17,10 @@
     </div>
   </div>
   <div class="card-footer">
-    <p style="display:inline;" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
+    <p style="display:inline; float:left" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
     <button type="button" style="float:right" class="btn btn-success" [disabled]="addedToCart" (click)="onAddToCart(game.gameId)">{{'game.toCart' | translate}}</button>
-    <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1" >{{'game.edit' | translate}}</a>
+    <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1">{{'game.edit' | translate}}</a>
     <span style="color:red; float:right; margin-top:7px; margin-right:5px" [hidden]="error == null">{{'game.alreadyOwned' | translate}}</span>
+    <button type="button" style="float:right; margin-right:100px" class="btn btn-danger" *ngIf="dataService.authService.currentUser?.roleId == 1"  (click)="onDeleteGame(game.gameId)">{{'delete' | translate}}</button>
   </div>
 </div>
