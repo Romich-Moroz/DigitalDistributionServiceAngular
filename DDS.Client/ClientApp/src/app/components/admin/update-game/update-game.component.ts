@@ -12,7 +12,7 @@ import { DataService } from '../../../services/data.service';
   styleUrls: ['./update-game.component.css']
 })
 export class UpdateGameComponent implements OnInit {
-  @Input() game: Game = null;
+  game: Game = null;
   leftoverGenres: Genre[];
   imageFile: File;
 

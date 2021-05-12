@@ -1,0 +1,20 @@
+<form class="card p-3" [formGroup]="form" (ngSubmit)="onSubmit()" style="width:50%; margin: 0 auto; margin-top: 200px">
+  <h3 class="text-center">{{'library.updateReview' | translate}}</h3>
+  <span style="color:red" class="text-center" [hidden]="error == null">{{error | translate}}</span>
+  <span class="text-center" [hidden]="message == null">{{'success' | translate}}</span>
+
+  <div class="form-group">
+    <label>{{'library.rating' | translate}}</label>
+    <input type="range" min="1" step="1" max="10" formControlName="rating" class="form-control" [ngModel]="review?.rating" required>
+    <label style="float:left">1</label>
+    <label style="float:right">10</label>
+  </div>
+  <div class="form-group">
+    <label i18n="Comment">{{'library.comment' | translate}}</label>
+    <textarea *ngIf="review != null" type="text" rows="5" formControlName="comment" placeholder="{{'library.commentPlaceholder' | translate}}" class="form-control" [(ngModel)]="review.comment" required></textarea>
+  </div>
+  <div>
+    <button type="button" style="width:20%; margin-top:10px; float:left; display:inline" (click)="onReviewDelete()" [disabled]="review?.reviewId == 0" class="btn btn-danger">{{'delete' | translate}}</button>
+    <button type="submit" style="width:60%; margin-top:10px; float:right; display:inline" [disabled]="!form.valid" class="btn btn-primary">{{'update' | translate}}</button>
+  </div>
+</form>

@@ -1,29 +1,29 @@
 <div>
-  <h3 class="text-center">Genre management</h3>
+  <h3 class="text-center">{{'admin.genreManagement' | translate}}</h3>
   <div class="card p-3" style="display:inline; width:60%; float:left">
-    <h4>Genres list</h4>
+    <h4>{{'admin.genresList' | translate}}</h4>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Genre</th>
-          <th scope="col">Action</th>
+          <th scope="col">{{'genre' | translate}}</th>
+          <th scope="col">{{'action' | translate}}</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let genre of this.genres">
           <td>{{ genre.name }}</td>
-          <td><button (click)="onDeleteGenre(genre.genreId)" class="btn btn-danger">Delete</button></td>
+          <td><button (click)="onDeleteGenre(genre.genreId)" class="btn btn-danger">{{'delete' | translate}}</button></td>
         </tr>
       </tbody>
     </table>
   </div>
   <form class="card p-3" [formGroup]="form" style="display:inline; width:40%; float:right">
-    <h3 class="text-center">Add genre</h3>
-    <span style="color:red; text-align:center" [hidden]="error == null">{{error}}</span>
-    <span style=" text-align:center" [hidden]="message == null">{{message}}</span>
+    <h3 class="text-center">{{'admin.addGenre' | translate}}</h3>
+    <span style="color:red; text-align:center" [hidden]="error == null">{{'admin.genreAlreadyExists' | translate}}</span>
+    <span style=" text-align:center" [hidden]="message == null">{{'success' | translate}}</span>
     <div class="form-group">
-      <input type="text" style="width:50%; display:inline; margin-left:5px; margin-right:5px" formControlName="name" class="form-control" placeholder="Enter new genre name" required>
-      <button type="button" style="display:inline" (click)="onAddGenre()" [disabled]="!form.get('name').valid" class="btn btn-primary">Add</button>
+      <input type="text" style="width:50%; display:inline; margin-left:5px; margin-right:5px" placeholder="{{'admin.genreNamePlaceholder' | translate}}" formControlName="name" class="form-control" required>
+      <button type="button" style="display:inline" (click)="onAddGenre()" [disabled]="!form.get('name').valid" class="btn btn-primary" >{{'add' | translate}}</button>
     </div>
   </form>
 </div>

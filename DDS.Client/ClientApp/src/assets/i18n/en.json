@@ -1,0 +1,89 @@
+{
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "userAlreadyExists": "User already exists",
+    "email": "Email",
+    "emailPlaceholder": "Enter email...",
+    "password": "Password",
+    "passwordPlaceholder": "Password...",
+    "forgot": "Forgot password",
+    "noAcc": "Don't have an account",
+    "accRec": "Account recovery",
+    "send": "Send",
+    "backSignIn": "Back to sign in",
+    "submit": "Submit"
+  },
+  "acc": {
+    "accSettings": "Account settings",
+    "newPassword": "New password",
+    "newPasswordPlaceholder": "New password",
+    "changePassword": "Change password"
+  },
+  "admin": {
+    "adminPanel": "Admin panel",
+    "manageGenres": "Manage genres",
+    "addGame": "Add game",
+    "updateGame": "Update game",
+    "gameName": "Name",
+    "gameNamePlaceholder": "Game name",
+    "developer": "Developer",
+    "developerPlaceholder": "Developer",
+    "description": "Description",
+    "descriptionPlaceholder": "Description",
+    "price": "Price",
+    "pricePlaceholder": "Price",
+    "genresList": "Genres list",
+    "addGenre": "Add genre",
+    "genreAlreadyExists": "Genre already exists",
+    "genreManagement": "Genres management",
+    "genreNamePlaceholder": "Genre"
+  },
+  "cart": {
+    "game": "Game",
+    "price": "Price",
+    "additionDate": "Addition date",
+    "total": "Total",
+    "checkout": "Checkout"
+  },
+  "catalog": {
+    "search": "Search",
+    "searchPlaceholder": "Search",
+    "allGenres": "All genres",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "library": {
+    "updateReview": "Update review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "commentPlaceholder": "Comment"
+  },
+  "nav": {
+    "catalog": "Catalog",
+    "cart": "Cart",
+    "library": "Library",
+    "account": "Account",
+    "admin": "Admin",
+    "signIn": "SignIn",
+    "signOut": "SignOut"
+  },
+  "game": {
+    "notRatedYet": "Not rated yet",
+    "votes": "Reviews",
+    "toCart": "To cart",
+    "edit": "Edit",
+    "alreadyOwned": "Game already in cart or owned",
+    "ownershipDate": "Ownership date",
+    "boughtFor": "Bought for",
+    "updateReview": "Update review"
+  },
+  "success": "Success",
+  "genre": "Genre",
+  "action": "Action",
+  "delete": "Delete",
+  "update": "Update",
+  "add": "Add"
+}

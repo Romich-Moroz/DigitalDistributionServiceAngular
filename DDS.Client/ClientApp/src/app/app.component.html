@@ -1,6 +1,6 @@
 <div class="container h-100">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/catalog" routerLinkActive="active">Digital distribution service</a>
+    <a class="navbar-brand" routerLink="/catalog" routerLinkActive="active" >Digital distribution service</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,28 +8,35 @@
     <div class="navbar-collapse collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/catalog" routerLinkActive="active">Catalog</a>
+          <a class="nav-link" routerLink="/catalog" routerLinkActive="active">{{'nav.catalog' | translate}}</a>
         </li>
         <li class="nav-ite" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active" >{{'nav.cart' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/library" routerLinkActive="active">Library</a>
+          <a class="nav-link" routerLink="/library" routerLinkActive="active">{{'nav.library' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" routerLink="/account" routerLinkActive="active">Account</a>
+          <a class="nav-link" routerLink="/account" routerLinkActive="active">{{'nav.account' | translate}}</a>
         </li>
         <li class="nav-item" *ngIf="dataService.authService.currentUser?.roleId == 1">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">{{'nav.admin' | translate}}</a>
+        </li>
+        <li>
+          <span class="form-inline">
+            <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+              <option *ngFor="let language of translate.getLangs()" [value]="language" [selected]="language === translate.currentLang">{{ language }}</option>
+            </select>
+          </span>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="dataService.authService.currentUser == null">
-          <a class="nav-link" routerLink="/authentication" routerLinkActive="active">Sign In</a>
+          <a class="nav-link" routerLink="/authentication" routerLinkActive="active">{{'nav.signIn' | translate}}</a>
         </li>
 
         <li class="nav-item" *ngIf="dataService.authService.currentUser != null">
-          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer">Sign Out</a>
+          <a class="nav-link" (click)="onSignOut()" style="cursor:pointer">{{'nav.signOut' | translate}}</a>
         </li>
       </ul>
     </div>

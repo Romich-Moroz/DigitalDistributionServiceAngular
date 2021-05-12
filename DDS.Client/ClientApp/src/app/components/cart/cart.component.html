@@ -1,17 +1,25 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Game</th>
-      <th scope="col">Addition date</th>
-      <th scope="col">Action</th>
+      <th scope="col">{{'cart.game' | translate}}</th>
+      <th scope="col">{{'cart.price' | translate}}</th>
+      <th scope="col">{{'cart.additionDate' | translate}}</th>
+      <th scope="col">{{'action' | translate}}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let cart of carts">
       <td>{{ cart.game.name }}</td>
-      <td>{{ cart.date | date:'dd/MM/yyyy' }}</td>
-      <td><button (click)="onDeleteCart(cart.cartId)" class="btn btn-danger">Delete</button></td>
+      <td>{{ cart.game.price }}$</td>
+      <td>{{ cart.date | date:'dd/MM/yyyy'}}</td>
+      <td><button (click)="onDeleteCart(cart.cartId)" class="btn btn-danger">{{'delete' | translate}}</button></td>
+    </tr>
+    <tr>
+      <td >{{'cart.total' | translate}}: </td>
+      <td>{{ getSum() }} $</td>
+      <td></td>
+      <td></td>
     </tr>
   </tbody>
 </table>
-<button (click)="onCheckout()" [disabled]="carts.length == 0" class="btn btn-success">Checkout</button>
+<button (click)="onCheckout()" [disabled]="carts?.length == 0" class="btn btn-success">{{'cart.checkout' | translate}}</button>

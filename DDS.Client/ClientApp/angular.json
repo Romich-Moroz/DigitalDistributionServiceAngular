@@ -56,6 +56,12 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": [ "en" ]
+            },
+            "ru": {
+              "localize": [ "ru" ]
             }
           }
         },

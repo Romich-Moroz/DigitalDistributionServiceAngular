@@ -6,20 +6,20 @@
     <div class="card-body">
       <div>
         <h4 class="card-title" style="display:inline">{{ game.name }}</h4>
-        <label style="display: inline; float:right" *ngIf="game.reviewCount == 0">Not rated yet</label>
-        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0">{{ game.rating }}/10 based on {{ game.reviewCount }} votes</a>
+        <label style="display: inline; float:right" *ngIf="game.reviewCount == 0">{{'game.notRatedYet' | translate}}</label>
+        <a style="display: inline; float:right" *ngIf="game.reviewCount != 0" [routerLink]="['/reviews',game.gameId]">{{ game.rating }}/10 || {{ game.reviewCount }} {{'game.votes' | translate}}</a>
       </div>
       <div style="margin-top:5px">
-        <h6 style="" class="card-subtitle mb-2 text-muted">Developer: {{game.developer}}</h6>
+        <h6 style="" class="card-subtitle mb-2 text-muted">{{game.developer}}</h6>
         <p>{{game.description}} </p>
-        <h6 style="float:right">Only for: {{ game.price }}$</h6>
+        <h6 style="float:right">{{ game.price }}$</h6>
       </div>
     </div>
   </div>
   <div class="card-footer">
     <p style="display:inline;" *ngFor="let genre of game.gameGenres; let isLast=last">{{genre.genre.name}}{{isLast ? '' : ', '}}</p>
-    <button type="button" style="float:right" class="btn btn-success" [disabled]="addedToCart" (click)="onAddToCart(game.gameId)" >Add to cart</button>
-    <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1">Edit</a>
-    <span style="color:red; float:right; margin-top:7px; margin-right:5px" [hidden]="error == null">{{error}}</span>
+    <button type="button" style="float:right" class="btn btn-success" [disabled]="addedToCart" (click)="onAddToCart(game.gameId)">{{'game.toCart' | translate}}</button>
+    <a style="float:right; margin-right:10px" [routerLink]="['/update-game',game.gameId]" class="btn btn-warning" *ngIf="dataService.authService.currentUser?.roleId == 1" >{{'game.edit' | translate}}</a>
+    <span style="color:red; float:right; margin-top:7px; margin-right:5px" [hidden]="error == null">{{'game.alreadyOwned' | translate}}</span>
   </div>
 </div>
