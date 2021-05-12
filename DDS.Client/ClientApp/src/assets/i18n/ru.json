@@ -39,6 +39,22 @@
     "genreManagement": "Управление жанрами",
     "genreNamePlaceholder": "Жанр"
   },
+  "cart": {
+    "game": "Игра",
+    "price": "Цена",
+    "additionDate": "Дата добавления",
+    "total": "Всего",
+    "checkout": "Оплатить"
+  },
+  "catalog": {
+    "search": "Поиск",
+    "searchPlaceholder": "Поиск",
+    "allGenres": "Все жанры",
+    "minPrice": "Мин. цена",
+    "maxPrice": "Макс. цена",
+    "previous": "Пред.",
+    "next": "След."
+  },
   "success": "Success",
   "genre": "Жанр",
   "action": "Действие",

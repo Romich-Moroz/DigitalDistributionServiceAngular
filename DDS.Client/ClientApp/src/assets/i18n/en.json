@@ -39,6 +39,22 @@
     "genreManagement": "Genres management",
     "genreNamePlaceholder": "Genre"
   },
+  "cart": {
+    "game": "Game",
+    "price": "Price",
+    "additionDate": "Addition date",
+    "total": "Total",
+    "checkout": "Checkout"
+  },
+  "catalog": {
+    "search": "Search",
+    "searchPlaceholder": "Search",
+    "allGenres": "All genres",
+    "minPrice": "Min price",
+    "maxPrice": "Max price",
+    "previous": "Previous",
+    "next": "Next"
+  },
   "success": "Success",
   "genre": "Genre",
   "action": "Action",

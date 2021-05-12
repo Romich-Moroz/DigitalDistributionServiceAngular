@@ -1,22 +1,19 @@
 <div class="card p-3">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit(1)">
-    <label i18n="Search" style="margin-right:5px">Search</label>
-    <input class="form-control" type="search" formControlName="name" style="width:30%; display:inline; margin-right: 10px" aria-label="Search">
+    <input class="form-control" type="search" formControlName="name" placeholder="{{'catalog.searchPlaceholder' | translate}}" style="width:30%; display:inline; margin-right: 10px" aria-label="Search">
     <select class="form-select" formControlName="genreId" aria-label="Default select example" style="width:20%; display:inline; margin-right: 10px">
-      <option value="0" i18n="All genres">All genres</option>
+      <option value="0">{{'catalog.allGenres' | translate}}</option>
       <option *ngFor="let genre of genres" [value]="genre.genreId">{{genre.name}}</option>
     </select>
-    <label i18n="Min price" style="margin-right:5px">Min price</label>
-    <input class="form-control" type="number" formControlName="minPrice" style="width:10%; display:inline; margin-right: 10px">
-    <label i18n="Max price" style="margin-right:5px">Max price</label>
-    <input class="form-control" type="number" formControlName="maxPrice" style="width:10%; display:inline; margin-right: 10px">
-    <button class="btn btn-outline-primary my-2 my-sm-0" style="display:inline" type="submit" i18n="Search">Search</button>
+    <input class="form-control" type="number" formControlName="minPrice" placeholder="{{'catalog.minPrice' | translate}}" style="width:10%; display:inline; margin-right: 10px">
+    <input class="form-control" type="number" formControlName="maxPrice" placeholder="{{'catalog.maxPrice' | translate}}" style="width:10%; display:inline; margin-right: 10px">
+    <button class="btn btn-outline-primary my-2 my-sm-0" style="display:inline" type="submit">{{'catalog.search' | translate}}</button>
   </form>
   <nav aria-label="Page navigation example" style="margin-top:20px">
     <ul class="pagination">
-      <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)" i18n="Previous">Previous</a></li>
+      <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)">{{'catalog.previous' | translate}}</a></li>
       <li class="page-item" [ngClass]="page?.page == index+1 ? 'active' : ''" *ngFor="let a of createRange(page?.totalPages); let index = index" style="cursor:pointer"><a class="page-link" (click)="onSubmit(index+1)">{{index + 1}}</a></li>
-      <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)" i18n="Next">Next</a></li>
+      <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)">{{'catalog.next' | translate}}</a></li>
     </ul>
   </nav>
 </div>
@@ -25,8 +22,8 @@
 
 <nav aria-label="Page navigation example" style="margin-top:20px; padding-bottom:50px">
   <ul class="pagination">
-    <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)" i18n="Previous">Previous</a></li>
+    <li class="page-item" [ngClass]="page?.canPrevious ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page-1)">{{'catalog.previous' | translate}}</a></li>
     <li class="page-item" [ngClass]="page?.page == index+1 ? 'active' : ''" *ngFor="let a of createRange(page?.totalPages); let index = index" style="cursor:pointer" ><a class="page-link" (click)="onSubmit(index+1)">{{index + 1}}</a></li>
-    <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)" i18n="Next">Next</a></li>
+    <li class="page-item" [ngClass]="page?.canNext ? '' : 'disabled'" style="cursor:pointer"><a class="page-link" (click)="onSubmit(page?.page+1)">{{'catalog.next' | translate}}</a></li>
   </ul>
 </nav>
