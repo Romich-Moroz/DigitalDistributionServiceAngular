@@ -19,7 +19,10 @@ export class GamePreviewComponent {
   constructor(dataService: DataService, private router: Router) { this.dataService = dataService; }
 
   onAddToCart(gameId: number) {
-    this.dataService.storeService.addToCart(gameId).subscribe(() => { this.addedToCart = true }, (error) => this.error = error);
+    if (this.dataService.authService.currentUser == null)
+      this.router.navigate(["/authentication"]);
+    else
+      this.dataService.storeService.addToCart(gameId).subscribe(() => { this.addedToCart = true }, (error) => this.error = error);
   }
 
   onDeleteGame(gameId: number) {

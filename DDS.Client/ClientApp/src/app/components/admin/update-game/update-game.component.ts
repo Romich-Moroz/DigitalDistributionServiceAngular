@@ -95,6 +95,7 @@ export class UpdateGameComponent implements OnInit {
       var genre = this.leftoverGenres.find(g => g.genreId == genreId);
       this.leftoverGenres.splice(this.leftoverGenres.findIndex(g => g.genreId == genre.genreId), 1);
       this.game.gameGenres.push(new GameGenre(genre.genreId, gameId, genre));
+      this.formGenre.controls['selectedGenre'].setValue(this.leftoverGenres[0].genreId);
     })
   }
 

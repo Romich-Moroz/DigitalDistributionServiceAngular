@@ -1,10 +1,7 @@
 <form class="card p-3" [formGroup]="form" (ngSubmit)="onSubmit()" style="display: inline; width:70%; float: left" enctype="multipart/form-data">
-  <h3 class="text-center" >{{'admin.updateGame' | translate}}</h3>
-  <span style="color:red" class="text-center" [hidden]="error == null">{{error | translate}}</span>
-  <span class="text-center" [hidden]="message == null" >{{'success' | translate}}</span>
-
+  <h3 class="text-center">{{'admin.updateGame' | translate}}</h3>
   <div class="form-group">
-    <img *ngIf="game != null"  [src]="['data:image/png;base64',game?.image]" style="width:100%; margin-bottom:10px" />
+    <img *ngIf="game?.image != null" [src]="['data:image/png;base64',game?.image]" style="width:100%; margin-bottom:10px" />
     <input type="file" id="file" (change)="handleFileInput($event.target.files)">
   </div>
   <div class="form-group">
@@ -12,7 +9,7 @@
     <input type="text" formControlName="name" class="form-control" placeholder="{{'admin.gameNamePlaceholder' | translate}}" [ngModel]="game?.name" required>
   </div>
   <div class="form-group">
-    <label >{{'admin.developer' | translate}}</label>
+    <label>{{'admin.developer' | translate}}</label>
     <input type="text" formControlName="developer" class="form-control" placeholder="{{'admin.developerPlaceholder' | translate}}" [ngModel]="game?.developer" required>
   </div>
   <div class="form-group">
@@ -22,6 +19,10 @@
   <div class="form-group">
     <label>{{'admin.price' | translate}}</label>
     <input type="number" formControlName="price" class="form-control" placeholder="{{'admin.pricePlaceholder' | translate}}" [ngModel]="game?.price" required>
+  </div>
+  <div style="float:none">
+    <span style="color:red" class="text-center" [hidden]="error == null">{{error | translate}}</span>
+    <span class="text-center" >{{'success' | translate}}</span>
   </div>
   <button type="submit" style="width:100%; margin-top:10px" [disabled]="!form.valid" class="btn btn-primary">{{'admin.updateGame' | translate}}</button>
 </form>
