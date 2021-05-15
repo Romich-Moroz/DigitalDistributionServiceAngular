@@ -27,6 +27,7 @@ export class UpdateGenresComponent implements OnInit {
     this.dataService.adminService.addGenre(
       this.form.get('name').value
     ).subscribe((genre: Genre) => {
+      this.form.controls['name'].setValue('');
       this.genres.push(genre);
     }, (error: string) => this.error = error)
   }

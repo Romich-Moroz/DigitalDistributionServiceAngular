@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     this.dataService.authService.check();
   }
   ngOnInit(): void {
-      this.router.navigate["/catalog"];
+      this.router.navigate(["/catalog"]);
     }
 
   onSignOut() {
