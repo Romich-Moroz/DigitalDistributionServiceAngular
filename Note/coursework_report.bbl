@@ -7,30 +7,6 @@
 \ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
 \ifx\undefined\BibEmph\def\BibEmph#1{#1}\else\fi
 
-\bibitem{msdn_WinApiGetKeyboardState}
-\selectlanguageifdefined{english}
-Функция GetKeyboardState [Электронный ресурс]. ---
-\newblock Электронные данные. ---
-\newblock Режим доступа:
-  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeyboardstate.
-  --- Дата доступа: 15.12.20.
-
-\bibitem{msdn_WinApiGetKeyState}
-\selectlanguageifdefined{english}
-Функция GetKeyState [Электронный ресурс]. ---
-\newblock Электронные данные. ---
-\newblock Режим доступа:
-  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate.
-  --- Дата доступа: 15.12.20.
-
-\bibitem{msdn_WinApiGetAsyncKeyState}
-\selectlanguageifdefined{english}
-Функция GetAsyncKeyState [Электронный ресурс]. ---
-\newblock Электронные данные. ---
-\newblock Режим доступа:
-  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate.
-  --- Дата доступа: 15.12.20.
-
 \bibitem{shupak_WinAPI}
 \selectlanguageifdefined{english}
 \BibEmph{Щупак,~Ю.~А.} Win32 API. Разработка
@@ -53,6 +29,30 @@
 \newblock Электронные данные. ---
 \newblock Режим доступа:
   https://docs.microsoft.com/en-us/windows/win32/learnwin32/your-first-windows-program.
+  --- Дата доступа: 15.12.20.
+
+\bibitem{msdn_WinApiGetKeyboardState}
+\selectlanguageifdefined{english}
+Функция GetKeyboardState [Электронный ресурс]. ---
+\newblock Электронные данные. ---
+\newblock Режим доступа:
+  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeyboardstate.
+  --- Дата доступа: 15.12.20.
+
+\bibitem{msdn_WinApiGetKeyState}
+\selectlanguageifdefined{english}
+Функция GetKeyState [Электронный ресурс]. ---
+\newblock Электронные данные. ---
+\newblock Режим доступа:
+  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getkeystate.
+  --- Дата доступа: 15.12.20.
+
+\bibitem{msdn_WinApiGetAsyncKeyState}
+\selectlanguageifdefined{english}
+Функция GetAsyncKeyState [Электронный ресурс]. ---
+\newblock Электронные данные. ---
+\newblock Режим доступа:
+  https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getasynckeystate.
   --- Дата доступа: 15.12.20.
 
 \end{thebibliography}
