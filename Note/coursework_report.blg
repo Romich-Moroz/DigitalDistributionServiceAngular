@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: coursework_report.aux
+Reallocating 'name_of_file' (item size: 1) to 37 items.
+The style file: styles/belarus-specific-utf8gost780u.bst
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+Database file #1: bibliography_database.bib
+Warning--empty booktitle in shupak_WinAPI
+Warning--empty booktitle in richi_C
+You've used 6 entries,
+            2678 wiz_defined-function locations,
+            672 strings with 6486 characters,
+and the built_in function-call counts, 1233 in all, are:
+= -- 149
+> -- 15
+< -- 2
++ -- 9
+- -- 3
+* -- 36
+:= -- 132
+add.period$ -- 20
+call.type$ -- 6
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 71
+empty$ -- 147
+format.name$ -- 5
+if$ -- 325
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 0
+newline$ -- 46
+num.names$ -- 5
+pop$ -- 38
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 38
+stack$ -- 0
+substring$ -- 12
+swap$ -- 45
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 5
+width$ -- 7
+write$ -- 100
+(There were 2 warnings)

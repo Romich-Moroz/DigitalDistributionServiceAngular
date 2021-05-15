@@ -1,0 +1,75 @@
+<mxGraphModel dx="1422" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="4x8Yvbpx_Nvwn2mP5vuP-1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="360" y="90" as="sourcePoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="auuYeCAxz7LAwCTdT31Y-20" value="Начало&lt;br&gt;&lt;span style=&quot;background-color: rgb(255 , 255 , 255)&quot;&gt;Отследить нажатие клавиш&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="1" vertex="1">
+      <mxGeometry x="280" y="10" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="lOdg_drUkc5d3jlDm7zj-21" value="Конец&lt;br&gt;&lt;span style=&quot;background-color: rgb(255 , 255 , 255)&quot;&gt;Отследить нажатие клавиш&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" parent="1" vertex="1">
+      <mxGeometry x="280" y="840" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-1" target="4x8Yvbpx_Nvwn2mP5vuP-3">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-1" value="Получить текущее активное окно" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="120" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-3" target="4x8Yvbpx_Nvwn2mP5vuP-5">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-3" value="Получить раскладку клавиатуры текущего активного окна" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="230" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-5" target="4x8Yvbpx_Nvwn2mP5vuP-8">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-5" value="A1&lt;br&gt;i = 0, i &amp;lt; количество отслеживаемых клавиш" style="shape=loopLimit;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="340" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-7" target="lOdg_drUkc5d3jlDm7zj-21">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-7" value="A1&lt;br&gt;i++" style="shape=loopLimit;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="1">
+      <mxGeometry x="280" y="750" width="160" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-8" target="4x8Yvbpx_Nvwn2mP5vuP-9">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-8" value="Получить состояние i-й отслеживаемой клавиши" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="430" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-9" target="4x8Yvbpx_Nvwn2mP5vuP-12">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-9">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="360" y="730" as="targetPoint" />
+        <Array as="points">
+          <mxPoint x="240" y="580" />
+          <mxPoint x="240" y="730" />
+          <mxPoint x="360" y="730" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-9" value="Активное окно удовлетворяет фильтрам" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="540" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="4x8Yvbpx_Nvwn2mP5vuP-12" target="4x8Yvbpx_Nvwn2mP5vuP-7">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-12" value="Отправить символьное представление клавиши на сервер с учетом раскладки клавиатуры" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+      <mxGeometry x="280" y="640" width="160" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-17" value="Нет" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="560" width="40" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="4x8Yvbpx_Nvwn2mP5vuP-18" value="Да" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+      <mxGeometry x="360" y="620" width="30" height="20" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
